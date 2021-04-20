@@ -60,6 +60,8 @@
     <Compile Include="AddPlantCare.cs" />
     <Compile Include="PlantDetails.cs" />
     <Compile Include="PlantDetailsModels\PlantTypes.cs" />
+    <Compile Include="PlantDetailsModels\RootStructure.cs" />
+    <Compile Include="PlantDetailsModels\WaterNeeds.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNotesToMyPlant.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="MyPlant.cs" />
     <Compile Include="PlantDetails.cs" />

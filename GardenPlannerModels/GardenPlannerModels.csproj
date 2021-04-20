@@ -56,8 +56,10 @@
   <ItemGroup>
     <Compile Include="AddNotesToMyPlant.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="MyPlant.cs" />
-    <Compile Include="PlantDetails.cs" />
+
+    <Compile Include="MyPlants.cs" />
+    <Compile Include="PlantCare.cs" />
+
     <Compile Include="PlantTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

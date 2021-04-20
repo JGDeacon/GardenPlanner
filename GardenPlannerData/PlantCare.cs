@@ -16,12 +16,12 @@ namespace GardenPlannerData
         [ForeignKey(nameof(SunExposure))]
         public int SunExposureID { get; set; }
 
-        public SunExposure SunExposure { get; set; }
+        public SunExposures SunExposure { get; set; }
 
         [ForeignKey(nameof(WaterNeed))]
         public int WaterNeedID { get; set; }
 
-        public WaterNeed WaterNeed { get; set; }
+        public WaterNeeds WaterNeed { get; set; }
 
         [Required]
         public string Temperature { get; set; }

@@ -13,6 +13,7 @@ namespace GardenPlannerData
         [Key]
         public int PlantDetailsID { get; set; }
 
+        [Required]
         public int DaysToGerminate { get; set; }
 
         public int DaysToHarvest { get; set; }
@@ -43,6 +44,8 @@ namespace GardenPlannerData
 
         public bool IsMedicinal { get; set; }
 
+        [Required]
+        [MaxLength(3000)]
         public string Image { get; set; }
 
         public string Description { get; set; }

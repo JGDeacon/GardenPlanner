@@ -60,9 +60,13 @@
 
     <Compile Include="Plants.cs" />
 
+    <Compile Include="PlantZones.cs" />
+
+
 
     <Compile Include="PlantSeasons.cs" />
     <Compile Include="PlantTypes.cs" />
+
 
 
     <Compile Include="Properties\AssemblyInfo.cs" />

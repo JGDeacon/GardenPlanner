@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
     <Compile Include="MyPlant.cs" />
+    <Compile Include="PlantTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

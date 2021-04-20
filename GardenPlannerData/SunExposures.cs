@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace GardenPlannerData
 {
-    public class RootStructure
+    public class SunExposures
     {
         [Key]
-        public int RootStructureID { get; set; }
+        public int SunExposureID { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

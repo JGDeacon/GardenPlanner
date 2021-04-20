@@ -57,6 +57,7 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RootStructure.cs" />
+    <Compile Include="SunExposures.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

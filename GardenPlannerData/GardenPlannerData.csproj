@@ -55,20 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
-
     <Compile Include="MyPlants.cs" />
-
-
     <Compile Include="PlantCare.cs" />
-
+    <Compile Include="PlantDetails.cs" />
     <Compile Include="Plants.cs" />
-
-
+    <Compile Include="PlantZones.cs" />
     <Compile Include="PlantSeasons.cs" />
-
     <Compile Include="PlantTypes.cs" />
-
-
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RootStructure.cs" />
     <Compile Include="SunExposures.cs" />

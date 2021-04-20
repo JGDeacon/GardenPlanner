@@ -59,6 +59,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GardenPlannerData\GardenPlannerData.csproj">
+      <Project>{70F077C1-0069-46AB-B79B-34AFD988DAC5}</Project>
+      <Name>GardenPlannerData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GardenPlannerModels\GardenPlannerModels.csproj">
       <Project>{0A664617-DC06-4FBD-B136-9A725DDCB8B8}</Project>
       <Name>GardenPlannerModels</Name>

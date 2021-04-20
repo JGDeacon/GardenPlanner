@@ -56,12 +56,19 @@
   <ItemGroup>
     <Compile Include="IdentityModels.cs" />
     <Compile Include="MyPlant.cs" />
+    <Compile Include="PlantDetails.cs" />
     <Compile Include="PlantTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GardenPlannerData\GardenPlannerData.csproj">
+      <Project>{70F077C1-0069-46AB-B79B-34AFD988DAC5}</Project>
+      <Name>GardenPlannerData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

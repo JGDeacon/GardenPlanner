@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GardenPlannerModels
 {
-    public class PlantCare
+    public class AddPlantCare
     {
         public int SunExposureID { get; set; }
         public int WaterNeedID { get; set; }

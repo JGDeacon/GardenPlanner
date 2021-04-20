@@ -13,7 +13,7 @@ namespace GardenPlannerData
         [Key]
         public int MyPlantID { get; set; }
 
-        [ForeignKey(nameof(Users))]
+        //[ForeignKey(nameof(Users))]
         public int UserID { get; set; }
 
        

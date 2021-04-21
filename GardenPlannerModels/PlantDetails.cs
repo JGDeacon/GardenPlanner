@@ -10,6 +10,9 @@ namespace GardenPlannerModels
 {
     public class PlantDetails
     {
+        public string Name { get; set; }
+
+        public string ScientificName { get; set; }
 
         public int DaysToGerminate { get; set; }
 
@@ -27,12 +30,6 @@ namespace GardenPlannerModels
 
         public double RowSpacing { get; set; }
 
-
-        [ForeignKey(nameof(RootStructure))]
-        public int RootStructureID { get; set; }
-
-        public RootStructure RootStructure { get; set; }
-
         public bool IsDeerResistant { get; set; }
 
         public bool IsToxicToAnimal { get; set; }
@@ -44,7 +41,20 @@ namespace GardenPlannerModels
         public string Image { get; set; }
 
         public string Description { get; set; }
+
         public PlantTypes PlantTypes { get; set; }
+
+        public RootStructure RootStructure { get; set; }
+
+        public PlantCare PlantCare { get; set; }
+
+        public PlantSeasons PlantSeasons { get; set; }
+
+        public SunExposures SunExposures { get; set; }
+
+        public WaterNeeds WaterNeeds { get; set; }
+
+        public PlantZones PlantZones { get; set; }
 
     }
 }

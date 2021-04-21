@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GardenPlannerModels
 {
-    public class MyPlants
+    public class MyPlantsModel
     {
         [MaxLength(500)]
         public string Location { get; set; }

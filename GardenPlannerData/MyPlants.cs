@@ -14,7 +14,7 @@ namespace GardenPlannerData
         public int MyPlantID { get; set; }
 
         //[ForeignKey(nameof(Users))]
-        public int UserID { get; set; }
+        public Guid UserID { get; set; }
 
        
         [MaxLength(500)]

@@ -51,7 +51,7 @@ namespace GardenPlannerData.Migrations
             context.PlantZones.AddRange(plantZones);
 
             List<PlantTypes> plantTypes = new List<PlantTypes>();
-            plantTypes.Add(new PlantTypes { PlantTypeID = 1, Name="Wildflower",Description="They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            plantTypes.Add(new PlantTypes { PlantTypeID = 1, Name = "Wildflower",Description="They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             plantTypes.Add(new PlantTypes { PlantTypeID = 2, Name = "Thistle", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             plantTypes.Add(new PlantTypes { PlantTypeID = 3, Name = "Flower", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             plantTypes.Add(new PlantTypes { PlantTypeID = 4, Name = "Herb", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
@@ -67,7 +67,7 @@ namespace GardenPlannerData.Migrations
             plantTypes.Add(new PlantTypes { PlantTypeID = 14, Name = "Grass", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             plantTypes.Add(new PlantTypes { PlantTypeID = 15, Name = "Palm tree", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             plantTypes.Add(new PlantTypes { PlantTypeID = 16, Name = "Bush", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
-            plantTypes.Add(new PlantTypes { PlantTypeID = 17, Name = "Corn", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            plantTypes.Add(new PlantTypes { PlantTypeID = 17, Name = "Vegetable", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             plantTypes.Add(new PlantTypes { PlantTypeID = 18, Name = "Tree", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             context.PlantTypes.AddRange(plantTypes);
 

@@ -80,7 +80,12 @@
     <Compile Include="MyPlants.cs" />
     <Compile Include="AddPlantCare.cs" />
     <Compile Include="PlantDetails.cs" />
+    <Compile Include="PlantDetailsModels\PlantCare.cs" />
+    <Compile Include="PlantDetailsModels\PlantSeasons.cs" />
     <Compile Include="PlantDetailsModels\PlantTypes.cs" />
+    <Compile Include="PlantDetailsModels\RootStructure.cs" />
+    <Compile Include="PlantDetailsModels\WaterNeeds.cs" />
+    <Compile Include="PlantDetailsModels\SunExposure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

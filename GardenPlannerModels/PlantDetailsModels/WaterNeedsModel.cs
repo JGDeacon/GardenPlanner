@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace GardenPlannerModels.PlantDetailsModels
 {
-    public class PlantZones
+    public class WaterNeedsModel
     {
-        public string ZoneCode { get; set; }
-
-
+        public string Name { get; set; }
         public string Description { get; set; }
-
     }
 }

@@ -82,6 +82,7 @@
     <Compile Include="PlantDetailsModels\PlantCare.cs" />
     <Compile Include="PlantDetailsModels\PlantSeasons.cs" />
     <Compile Include="PlantDetailsModels\PlantTypes.cs" />
+    <Compile Include="PlantDetailsModels\PlantZones.cs" />
     <Compile Include="PlantDetailsModels\RootStructure.cs" />
     <Compile Include="PlantDetailsModels\WaterNeeds.cs" />
     <Compile Include="PlantDetailsModels\SunExposure.cs" />

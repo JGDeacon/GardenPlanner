@@ -279,7 +279,6 @@ namespace GardenPlannerServices
                 DaysToHarvest = f.DaysToHarvest,
                 SeedDepth = f.SeedDepth,
                 IsPerennial = f.IsPerennial,
-                //don't need PlantHeightMax since we're searching by it
                 PlantHeightMax = f.PlantHeightMax,
                 PlantWidthtMax = f.PlantWidthtMax,
                 SeedSpacing = f.SeedSpacing,
@@ -313,12 +312,12 @@ namespace GardenPlannerServices
                 SunExposures = new SunExposureModel
                 {
                     Name = ctx.SunExposures.Single(g => g.SunExposureID == ctx.PlantCare.Single(z => z.PlantCareID == ctx.Plants.Single(h => h.PlantDetailsID == f.PlantDetailsID).PlantCareID).SunExposureID).Name,
-                    //Description =
+                    Description = ctx.SunExposures.Single(g => g.SunExposureID == ctx.PlantCare.Single(z => z.PlantCareID == ctx.Plants.Single(h => h.PlantDetailsID == f.PlantDetailsID).PlantCareID).SunExposureID).Description
                 },
                 WaterNeeds = new WaterNeedsModel
                 {
-                    //Name =
-                    //Description =
+                    Name = ctx.WaterNeeds.Single(g => g.WaterNeedID == ctx.PlantCare.Single(z => z.PlantCareID == ctx.Plants.Single(h => h.PlantDetailsID == f.PlantDetailsID).PlantCareID).WaterNeedID).Name,
+                    Description = ctx.WaterNeeds.Single(g => g.WaterNeedID == ctx.PlantCare.Single(z => z.PlantCareID == ctx.Plants.Single(h => h.PlantDetailsID == f.PlantDetailsID).PlantCareID).WaterNeedID).Description
                 },
                 PlantZones = new PlantZonesModel
                 {

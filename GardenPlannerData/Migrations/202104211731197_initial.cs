@@ -3,7 +3,7 @@ namespace GardenPlannerData.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,7 @@ namespace GardenPlannerData.Migrations
                 c => new
                     {
                         MyPlantID = c.Int(nullable: false, identity: true),
-                        UserID = c.Int(nullable: false),
+                        UserID = c.Guid(nullable: false),
                         Location = c.String(maxLength: 500),
                         PlantID = c.Int(nullable: false),
                         DatePlanted = c.DateTimeOffset(nullable: false, precision: 7),

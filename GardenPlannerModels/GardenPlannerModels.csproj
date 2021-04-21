@@ -76,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNotesToMyPlant.cs" />
+    <Compile Include="GetModels\GetRootStructureModel.cs" />
+    <Compile Include="GetModels\GetSunExposureModel.cs" />
+    <Compile Include="GetModels\GetWaterNeedsModel.cs" />
     <Compile Include="MyPlantsModel.cs" />
     <Compile Include="AddPlantCare.cs" />
     <Compile Include="PlantDetailsModel.cs" />
@@ -98,5 +101,6 @@
       <Name>GardenPlannerData</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

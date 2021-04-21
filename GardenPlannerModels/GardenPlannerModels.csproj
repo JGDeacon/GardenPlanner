@@ -78,14 +78,14 @@
     <Compile Include="AddNotesToMyPlant.cs" />
     <Compile Include="MyPlantsModel.cs" />
     <Compile Include="AddPlantCare.cs" />
-    <Compile Include="PlantDetails.cs" />
-    <Compile Include="PlantDetailsModels\PlantCare.cs" />
-    <Compile Include="PlantDetailsModels\PlantSeasons.cs" />
-    <Compile Include="PlantDetailsModels\PlantTypes.cs" />
-    <Compile Include="PlantDetailsModels\PlantZones.cs" />
-    <Compile Include="PlantDetailsModels\RootStructure.cs" />
-    <Compile Include="PlantDetailsModels\WaterNeeds.cs" />
-    <Compile Include="PlantDetailsModels\SunExposure.cs" />
+    <Compile Include="PlantDetailsModel.cs" />
+    <Compile Include="PlantDetailsModels\PlantCareModel.cs" />
+    <Compile Include="PlantDetailsModels\PlantSeasonsModel.cs" />
+    <Compile Include="PlantDetailsModels\PlantTypesModel.cs" />
+    <Compile Include="PlantDetailsModels\PlantZonesModel.cs" />
+    <Compile Include="PlantDetailsModels\RootStructureModel.cs" />
+    <Compile Include="PlantDetailsModels\WaterNeedsModel.cs" />
+    <Compile Include="PlantDetailsModels\SunExposureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

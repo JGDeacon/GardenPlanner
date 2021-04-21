@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GardenPlannerModels.PlantDetailsModels
 {
-    public class PlantSeasons
+    public class PlantSeasonsModel
     {
         public string Name { get; set; }
         public string  Description { get; set; }

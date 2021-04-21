@@ -1,4 +1,5 @@
 ﻿using GardenPlannerData;
+using GardenPlannerModels.PlantDetailsModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -42,19 +43,19 @@ namespace GardenPlannerModels
 
         public string Description { get; set; }
 
-        public PlantTypes PlantTypes { get; set; }
+        public PlantTypesModel PlantTypes { get; set; }
 
-        public RootStructure RootStructure { get; set; }
+        public RootStructureModel RootStructure { get; set; }
 
-        public PlantCare PlantCare { get; set; }
+        public PlantCareModel PlantCare { get; set; }
 
-        public PlantSeasons PlantSeasons { get; set; }
+        public PlantSeasonsModel PlantSeasons { get; set; }
 
-        public SunExposures SunExposures { get; set; }
+        public SunExposureModel SunExposures { get; set; }
 
-        public WaterNeeds WaterNeeds { get; set; }
+        public WaterNeedsModel WaterNeeds { get; set; }
 
-        public PlantZones PlantZones { get; set; }
+        public PlantZonesModel PlantZones { get; set; }
 
     }
 }

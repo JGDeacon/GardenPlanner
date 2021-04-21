@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GardenPlannerModels.PlantDetailsModels
+namespace GardenPlannerModels
 {
-    public class WaterNeeds
+    public class PlantTypesModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

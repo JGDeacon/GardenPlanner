@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GardenPlannerModels
+namespace GardenPlannerModels.PlantDetailsModels
 {
-    public class PlantTypes
+    public class PlantZonesModel
     {
-        public string Name { get; set; }
+        public string ZoneCode { get; set; }
+
+
         public string Description { get; set; }
+
     }
 }

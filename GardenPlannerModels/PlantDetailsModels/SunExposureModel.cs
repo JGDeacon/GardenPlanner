@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GardenPlannerModels.PlantDetailsModels
 {
-    public class RootStructure
+    public class SunExposureModel
     {
         public string Name { get; set; }
         public string Description { get; set; }

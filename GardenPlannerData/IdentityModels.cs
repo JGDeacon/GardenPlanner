@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
+
 namespace GardenPlannerData
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
@@ -31,6 +32,49 @@ namespace GardenPlannerData
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
+
+        }
+
+        public DbSet<MyPlants> MyPlants { get; set; }
+        public DbSet<PlantCare> PlantCare { get; set; }
+        public DbSet<PlantDetails> PlantDetails { get; set; }
+        public DbSet<Plants> Plants { get; set; }
+        public DbSet<PlantSeasons> PlantSeasons { get; set; }
+        public DbSet<PlantTypes> PlantTypes { get; set; }
+        public DbSet<PlantZones> PlantZones { get; set; }
+        public DbSet<RootStructure> RootStructure { get; set; }
+        public DbSet<SunExposures> SunExposures { get; set; }
+        public DbSet<WaterNeeds> WaterNeeds { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder
+                 .Conventions
+                 .Remove<PluralizingTableNameConvention>();
+
+            modelBuilder
+                .Configurations
+                 .Add(new IdentityUserLoginConfiguration())
+                .Add(new IdentityUserRoleConfiguration());
+        }
+
+        public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
+        {
+            public IdentityUserLoginConfiguration()
+            {
+                HasKey(iul => iul.UserId);
+            }
+        }
+
+
+        public class IdentityUserRoleConfiguration : EntityTypeConfiguration<IdentityUserRole>
+        {
+
+            public IdentityUserRoleConfiguration()
+            {
+                HasKey(iur => iur.UserId);
+            }
+
         }
         public DbSet<MyPlants> MyPlants { get; set; }
         public DbSet<PlantCare> PlantCare { get; set; }

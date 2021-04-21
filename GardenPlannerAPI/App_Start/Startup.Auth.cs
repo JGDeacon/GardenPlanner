@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using GardenPlannerAPI.Providers;
 using GardenPlannerAPI.Models;
+using GardenPlannerData;
 
 namespace GardenPlannerAPI
 {

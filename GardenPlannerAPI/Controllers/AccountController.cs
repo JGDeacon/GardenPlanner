@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 using GardenPlannerAPI.Models;
 using GardenPlannerAPI.Providers;
 using GardenPlannerAPI.Results;
+using GardenPlannerData;
 
 namespace GardenPlannerAPI.Controllers
 {

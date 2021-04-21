@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNotesToMyPlant.cs" />
+    <Compile Include="GetPlantSeasons.cs" />
     <Compile Include="MyPlantsModel.cs" />
     <Compile Include="AddPlantCare.cs" />
     <Compile Include="PlantDetailsModel.cs" />

@@ -145,6 +145,10 @@
     <Compile Include="Migrations\202104202235407_Initial2.Designer.cs">
       <DependentUpon>202104202235407_Initial2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104211728582_Guid.cs" />
+    <Compile Include="Migrations\202104211728582_Guid.Designer.cs">
+      <DependentUpon>202104211728582_Guid.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyPlants.cs" />
     <Compile Include="PlantCare.cs" />
@@ -168,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202104202235407_Initial2.resx">
       <DependentUpon>202104202235407_Initial2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104211728582_Guid.resx">
+      <DependentUpon>202104211728582_Guid.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -80,10 +80,10 @@
     <Compile Include="GetModels\GetSunExposureModel.cs" />
     <Compile Include="GetModels\GetWaterNeedsModel.cs" />
     <Compile Include="AddPlantModel.cs" />
-    <Compile Include="GetPlantCareModel.cs" />
-    <Compile Include="GetPlantSeasonsModel.cs" />
-    <Compile Include="GetPlantTypesModel.cs" />
-    <Compile Include="GetPlantZonesModel.cs" />
+    <Compile Include="GetModels\GetPlantCareModel.cs" />
+    <Compile Include="GetModels\GetPlantSeasonsModel.cs" />
+    <Compile Include="GetModels\GetPlantTypesModel.cs" />
+    <Compile Include="GetModels\GetPlantZonesModel.cs" />
     <Compile Include="MyPlantsModel.cs" />
     <Compile Include="AddPlantCare.cs" />
     <Compile Include="PlantDetailsModel.cs" />

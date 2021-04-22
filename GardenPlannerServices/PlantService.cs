@@ -182,11 +182,9 @@ namespace GardenPlannerServices
             return query.ToList();
         }
 
-       
-
-        public IEnumerable<PlantDetailsModel> GetPlantsByBloomSeason(int seasonID)
+        public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID)
         {
-            var query = ctx.Plants.Where(e => e.SeasonID == seasonID).Select(f => new PlantDetailsModel
+            var query = ctx.Plants.Where(e => e.ZoneID == zoneID).Select(f => new PlantDetailsModel
             {
                 Name = f.Name,
                 ScientificName = f.ScientificName,
@@ -223,7 +221,9 @@ namespace GardenPlannerServices
                     Name = ctx.RootStructure.Single(r => r.RootStructureID == ctx.PlantDetails.Single(z => z.PlantDetailsID == f.PlantDetailsID).RootStructureID).Name,
                     Description = ctx.RootStructure.Single(r => r.RootStructureID == ctx.PlantDetails.Single(z => z.PlantDetailsID == f.PlantDetailsID).RootStructureID).Description
                 },
+
             });
+
             return query.ToList();
         }
 
@@ -292,6 +292,7 @@ namespace GardenPlannerServices
         }
      
         public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID)
+        public IEnumerable<PlantDetailsModel> GetPlantsByBloomSeason(int seasonID)
         {
             var query = ctx.Plants.Where(e => e.ZoneID == zoneID).Select(f => new PlantDetailsModel
             {
@@ -331,7 +332,6 @@ namespace GardenPlannerServices
                     Description = ctx.RootStructure.Single(r => r.RootStructureID == ctx.PlantDetails.Single(z => z.PlantDetailsID == f.PlantDetailsID).RootStructureID).Description
                 },
             });
-
             return query.ToList();
         }
 
@@ -398,6 +398,6 @@ namespace GardenPlannerServices
 
 
         }
+               
     }
 }
-

@@ -8,14 +8,18 @@ using System.Threading.Tasks;
 
 namespace GardenPlannerData
 {
-    public class Likes
+    public class Comments
     {
         [Key]
-        public int LikeID { get; set; }
-        public bool IsLiked { get; set; }
+        public int CommentID { get; set; }
         [ForeignKey(nameof(Plants))]
         public int PlantID { get; set; }
         public Plants Plants { get; set; }
+        [Required, MaxLength(50, ErrorMessage = "50 Char Limit")]
+        public string Title { get; set; }
+        [Required, MaxLength(3000, ErrorMessage = "3000 Char Limit")]
+        public string Comment { get; set; }
+        public Guid UserID { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset? ModifiedDate { get; set; }
     }

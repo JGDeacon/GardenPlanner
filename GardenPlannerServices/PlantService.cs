@@ -13,6 +13,35 @@ namespace GardenPlannerServices
     {
         protected readonly ApplicationDbContext ctx = new ApplicationDbContext();
 
+        public bool AddPlant(AddPlantModel model)
+        {
+            Plants newPlant = new Plants
+            {
+                Name = model.Name,
+                ScientificName = model.ScientificName,
+                ZoneID = model.ZoneID,
+                SeasonID = model.SeasonID,
+                PlantTypeID = model.PlantTypeID,
+                PlantCareID = model.PlantCareID,
+                PlantDetailsID = model.PlantDetailsID,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
+            ctx.Plants.Add(newPlant);
+            return ctx.SaveChanges() == 1;
+        }
+        public bool UpdatePlant(int plantID, AddPlantModel model)
+        {
+            Plants plants = ctx.Plants.Single(e => e.PlantID == plantID);
+            plants.Name = model.Name;
+            plants.ScientificName = model.ScientificName;
+            plants.ZoneID = model.ZoneID;
+            plants.SeasonID = model.SeasonID;
+            plants.PlantTypeID = model.PlantTypeID;
+            plants.PlantCareID = model.PlantCareID;
+            plants.PlantDetailsID = model.PlantDetailsID;
+            plants.ModifiedDate = DateTimeOffset.UtcNow;
+            return ctx.SaveChanges() == 1;
+        }
         public IEnumerable<PlantDetailsModel> GetAllPlants()
         {
             var query = ctx.Plants.Where(e => e.PlantID >= 1).Select(f => BuildPlantDetailsModel(f));

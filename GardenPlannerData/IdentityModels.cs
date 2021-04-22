@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -13,6 +14,14 @@ namespace GardenPlannerData
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
+        public int RoleID { get; set; }
+        public bool PlantAdded { get; set; }
+        public bool PlantBloom { get; set; }
+        public bool WhenToPlant { get; set; }
+        public bool WhenToWater { get; set; }
+        public bool Answer { get; set; }
+        public DateTimeOffset CreatedDate { get; set; }
+        public DateTimeOffset? ModifiedDate { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager, string authenticationType)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -45,6 +54,12 @@ namespace GardenPlannerData
         public DbSet<RootStructure> RootStructure { get; set; }
         public DbSet<SunExposures> SunExposures { get; set; }
         public DbSet<WaterNeeds> WaterNeeds { get; set; }
+        public DbSet<Likes> Likes { get; set; }
+        public DbSet<Comments> Comments { get; set; }
+        public DbSet<Questions> Questions { get; set; }
+        public DbSet<Answers> Answers { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
+        //public DbSet<ApplicationUser> ApplicationUser { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

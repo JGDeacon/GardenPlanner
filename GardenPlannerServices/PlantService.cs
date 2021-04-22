@@ -96,16 +96,7 @@ namespace GardenPlannerServices
         {
             var query = ctx.PlantDetails.Where(e => e.PlantHeightMax == plantHeightMax).Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
-        }
-
-
-        public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID)
-        {
-            var query = ctx.Plants.Where(e => e.ZoneID == zoneID).Select(f => BuildPlantDetailsModel(f));
-            return query.ToList();
-
-
-        }
+        }       
 
         public IEnumerable<PlantDetailsModel> GetPerrenialPlants()
         {

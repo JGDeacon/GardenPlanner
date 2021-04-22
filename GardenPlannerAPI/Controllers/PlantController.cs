@@ -17,7 +17,7 @@ namespace GardenPlannerAPI.Controllers
         private PlantService CreatePlantService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var plantService = new PlantService();
+            var plantService = new PlantService(userID);
             return plantService;
         }
 
@@ -32,7 +32,7 @@ namespace GardenPlannerAPI.Controllers
             if (!service.AddPlant(plant))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("New plant has been created");
         }
         //PUT
         public IHttpActionResult Put(int plantID, AddPlantModel model)
@@ -45,7 +45,7 @@ namespace GardenPlannerAPI.Controllers
             if (!service.UpdatePlant(plantID, model))
                 return InternalServerError();
 
-            return Ok();
+            return Ok("Plant has been updated");
         }
 
         //All the GETS

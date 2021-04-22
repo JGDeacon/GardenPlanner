@@ -13,6 +13,13 @@ namespace GardenPlannerServices
     {
         protected readonly ApplicationDbContext ctx = new ApplicationDbContext();
 
+        private readonly Guid _userID;
+
+        public PlantService(Guid userID)
+        {
+            _userID = userID;
+        }
+
         public bool AddPlant(AddPlantModel model)
         {
             Plants newPlant = new Plants

@@ -100,7 +100,7 @@
     <Compile Include="GetModels\GetPlantSeasonsModel.cs" />
     <Compile Include="GetModels\GetPlantTypesModel.cs" />
     <Compile Include="GetModels\GetPlantZonesModel.cs" />
-    <Compile Include="MyPlantsModel.cs" />
+    <Compile Include="AddMyPlantModel.cs" />
     <Compile Include="AddPlantCare.cs" />
     <Compile Include="PlantDetailsModel.cs" />
     <Compile Include="PlantDetailsModels\PlantCareModel.cs" />

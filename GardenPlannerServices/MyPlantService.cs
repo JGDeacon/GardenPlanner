@@ -16,9 +16,9 @@ namespace GardenPlannerServices
         {
             _userID = userID;
         }
-        public IEnumerable<MyPlantsModel> GetMyPlants()
+        public IEnumerable<AddMyPlantModel> GetMyPlants()
         {
-            var query = ctx.MyPlants.Where(e => e.UserID == _userID).Select(e => new MyPlantsModel
+            var query = ctx.MyPlants.Where(e => e.UserID == _userID).Select(e => new AddMyPlantModel
             {
                 Location = e.Location,
                 PlantName = ctx.Plants.Single(f => f.PlantID == e.PlantID).Name,
@@ -29,6 +29,46 @@ namespace GardenPlannerServices
             }
             );
             return query.ToArray();
+        }
+        public bool AddMyPlant(AddMyPlantModel model)
+        {
+            MyPlants myPlants = new MyPlants
+            {
+                UserID = _userID,
+                Location = model.Location,
+                PlantID = model.PlantID,
+                DatePlanted = model.DatePlanted,
+                Photo = model.Photo,
+                Notes = model.Notes,
+                Year = model.Year,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
+            ctx.MyPlants.Add(myPlants);
+            return ctx.SaveChanges() == 1;
+        }
+        public bool AddNote(int myPlantID, string newNote)
+        {
+            MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == myPlantID);
+            myPlants.Notes = newNote;
+            return ctx.SaveChanges() == 1;
+        }
+        public bool DeleteMyPlant(int myPlantID)
+        {
+            MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == myPlantID);
+            ctx.MyPlants.Remove(myPlants);
+            return ctx.SaveChanges() == 1;
+        }
+        public bool UpdateMyPlant(int myPlantID, AddMyPlantModel model)
+        {
+            MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == myPlantID);
+            myPlants.Location = model.Location;
+            myPlants.PlantID = model.PlantID;
+            myPlants.DatePlanted = model.DatePlanted;
+            myPlants.Photo = model.Photo;
+            myPlants.Notes = model.Notes;
+            myPlants.Year = model.Year;
+            myPlants.ModifiedDate = DateTimeOffset.UtcNow;
+            return ctx.SaveChanges() == 1;
         }
     }
 }

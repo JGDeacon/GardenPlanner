@@ -12,6 +12,22 @@ namespace GardenPlannerServices
     public class PlantService
     {
         protected readonly ApplicationDbContext ctx = new ApplicationDbContext();
+
+        //public bool CreatePlant(AddPlantModel model)
+        //{
+        //    var entity =
+        //        new Plants()
+        //        {
+        //            Name = model.Name,
+        //            ScientificName = model.ScientificName,
+        //            ZoneID = model.ZoneID,
+        //            SeasonID = model.ZoneID,
+        //            PlantTypeID = model.PlantTypeID,
+        //            PlantCareID = model.PlantCareID,
+        //            PlantDetailsID = model.PlantDetailsID,
+        //            CreatedDate = DateTimeOffset.Now
+        //        };
+        //}
         public IEnumerable<PlantDetailsModel> GetPlantByType(int plantTypeID)
         {
             var query = ctx.Plants.Where(e => e.PlantTypeID == plantTypeID).Select(f => new PlantDetailsModel

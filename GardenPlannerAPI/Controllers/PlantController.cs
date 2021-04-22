@@ -1,4 +1,5 @@
-﻿using GardenPlannerServices;
+﻿using GardenPlannerModels;
+using GardenPlannerServices;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,41 @@ namespace GardenPlannerAPI.Controllers
             var userID = Guid.Parse(User.Identity.GetUserId());
             var plantService = new PlantService();
             return plantService;
+        }
+
+        //POST
+        public IHttpActionResult Post(AddPlantModel plant)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreatePlantService();
+
+            if (!service.AddPlant(plant))
+                return InternalServerError();
+
+            return Ok();
+        }
+        //PUT
+        public IHttpActionResult Put(int plantID, AddPlantModel model)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreatePlantService();
+
+            if (!service.UpdatePlant(plantID, model))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        //All the GETS
+        public IHttpActionResult Get()
+        {
+            PlantService plantService = CreatePlantService();
+            var plant = plantService.GetAllPlants();
+            return Ok(plant);
         }
 
         public IHttpActionResult GetType(int plantTypeID)

@@ -40,6 +40,8 @@ namespace GardenPlannerServices
             return query.ToList();
         }
 
+       
+
         public IEnumerable<PlantDetailsModel> GetPlantsByHeightMax(double plantHeightMax)
         {
             var query = ctx.PlantDetails.Where(e => e.PlantHeightMax == plantHeightMax).Select(f => BuildPlantDetailsModel(f));
@@ -112,7 +114,12 @@ namespace GardenPlannerServices
 
             return query.ToList();
         }
+
+
+        public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID)
+
         public IEnumerable<PlantDetailsModel> GetPlantByZoneAndSeason(int zoneId, int seasonID)
+
         {
             var query = ctx.Plants.Where(e => e.ZoneID == zoneId && e.SeasonID == seasonID).Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
@@ -122,6 +129,7 @@ namespace GardenPlannerServices
         {
             PlantDetailsModel plantDetailsModel = new PlantDetailsModel
             {
+
                 Name = plant.Name,
                 ScientificName = plant.ScientificName,
                 DaysToGerminate = ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).DaysToGerminate,
@@ -142,6 +150,7 @@ namespace GardenPlannerServices
                 PlantCare = new PlantCareModel { Description = ctx.PlantCare.Single(z => z.PlantCareID == plant.PlantCareID).Description, Temperature = ctx.PlantCare.Single(z => z.PlantCareID == plant.PlantCareID).Temperature },
                 PlantSeasons = new PlantSeasonsModel { Name = ctx.PlantSeasons.Single(z => z.SeasonID == plant.SeasonID).Name, Description = ctx.PlantSeasons.Single(z => z.SeasonID == plant.SeasonID).Description },
                 PlantZones = new PlantZonesModel { ZoneCode = ctx.PlantZones.Single(z => z.ZoneID == plant.ZoneID).ZoneCode, Description = ctx.PlantZones.Single(z => z.ZoneID == plant.ZoneID).Description },
+
                 SunExposures = new SunExposureModel
                 {
                     Name = ctx.SunExposures.Single(r => r.SunExposureID == ctx.PlantCare.Single(z => z.PlantCareID == plant.PlantCareID).SunExposureID).Name,
@@ -157,8 +166,10 @@ namespace GardenPlannerServices
                     Name = ctx.RootStructure.Single(r => r.RootStructureID == ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).RootStructureID).Name,
                     Description = ctx.RootStructure.Single(r => r.RootStructureID == ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).RootStructureID).Description
                 },
+
             };
             return plantDetailsModel;
+
         }
         private PlantDetailsModel BuildPlantDetailsModel(PlantDetails plantDetails)
         {
@@ -199,10 +210,86 @@ namespace GardenPlannerServices
                     Name = ctx.RootStructure.Single(r => r.RootStructureID == ctx.PlantDetails.Single(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Name,
                     Description = ctx.RootStructure.Single(r => r.RootStructureID == ctx.PlantDetails.Single(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Description
                 }
+
+
+            });
+
+            return query.ToList();
+
+        }
+
+        public IEnumerable<PlantDetailsModel> GetPlantByDaysToGerminate(int daysToGerminate)
+        {
+            var query = ctx.PlantDetails.Where(e => e.DaysToGerminate == daysToGerminate).Select(f => new PlantDetailsModel
+            {
+                Name = ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).Name,
+                ScientificName = ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).ScientificName,
+                DaysToGerminate = f.DaysToGerminate,
+                DaysToHarvest = f.DaysToHarvest,
+                SeedDepth = f.SeedDepth,
+                IsPerennial = f.IsPerennial,
+                PlantHeightMax = f.PlantHeightMax,
+                PlantWidthtMax = f.PlantWidthtMax,
+                SeedSpacing = f.SeedSpacing,
+                RowSpacing = f.RowSpacing,
+                IsDeerResistant = f.IsDeerResistant,
+                IsToxicToAnimal = f.IsToxicToAnimal,
+                IsToxicToHuman = f.IsToxicToHuman,
+                IsMedicinal = f.IsMedicinal,
+                Image = f.Image,
+                Description = f.Description,
+                PlantTypes = new PlantTypesModel
+                {
+                    Name = ctx.PlantTypes.Single(r => r.PlantTypeID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantTypeID).Name,
+                    Description = ctx.PlantTypes.Single(r => r.PlantTypeID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantTypeID).Description
+                },
+                RootStructure = new RootStructureModel
+                {
+                    Name = ctx.RootStructure.Single(z => z.RootStructureID == f.RootStructureID).Name,
+                    Description = ctx.RootStructure.Single(z => z.RootStructureID == f.RootStructureID).Description
+                },
+                PlantCare = new PlantCareModel
+                {
+                    Description = ctx.PlantCare.Single(r => r.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantCareID).Description,
+                    Temperature = ctx.PlantCare.Single(r => r.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantCareID).Temperature
+                },
+                PlantSeasons = new PlantSeasonsModel
+                {
+                    Name = ctx.PlantSeasons.Single(r => r.SeasonID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).SeasonID).Name,
+                    Description = ctx.PlantSeasons.Single(r => r.SeasonID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).SeasonID).Description
+                },
+                SunExposures =  new SunExposureModel
+                {
+                    Name = ctx.SunExposures.Single(r => r.SunExposureID == ctx.PlantCare.Single(g => g.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantCareID).SunExposureID).Name,
+                    Description = ctx.SunExposures.Single(r => r.SunExposureID == ctx.PlantCare.Single(g => g.PlantCareID ==ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantCareID).SunExposureID).Description
+                },
+                WaterNeeds = new WaterNeedsModel
+                {
+                    Name = ctx.WaterNeeds.Single(r => r.WaterNeedID == ctx.PlantCare.Single(g => g.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantCareID).WaterNeedID).Name,
+                    Description = ctx.WaterNeeds.Single(r => r.WaterNeedID == ctx.PlantCare.Single(g => g.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantCareID).WaterNeedID).Description
+                },
+                PlantZones = new PlantZonesModel
+                {
+                    ZoneCode = ctx.PlantZones.Single(r => r.ZoneID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).ZoneID).ZoneCode,
+                    Description = ctx.PlantZones.Single(r => r.ZoneID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).ZoneID).Description
+
+                }
+
+            });
+
+            return query.ToList();
+
+        
+        }
+
+       
+
+
+
             };
             return plantDetailsModel;
         }
 
+
     }
 }
-

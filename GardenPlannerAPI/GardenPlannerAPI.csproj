@@ -207,7 +207,6 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PlantsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -310,10 +309,6 @@
     <ProjectReference Include="..\GardenPlannerData\GardenPlannerData.csproj">
       <Project>{70F077C1-0069-46AB-B79B-34AFD988DAC5}</Project>
       <Name>GardenPlannerData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GardenPlannerServices\GardenPlannerServices.csproj">
-      <Project>{6AF4784C-AC64-4DEA-88AB-317DBE7DC28B}</Project>
-      <Name>GardenPlannerServices</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

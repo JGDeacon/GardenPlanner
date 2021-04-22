@@ -11,7 +11,6 @@ namespace GardenPlannerModels
     public class AddPlantModel
     {
         public string Name { get; set; }
-
         public string ScientificName { get; set; }
         public int ZoneID { get; set; }
         public int SeasonID { get; set; }

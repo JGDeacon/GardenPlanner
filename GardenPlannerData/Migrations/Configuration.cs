@@ -51,7 +51,7 @@ namespace GardenPlannerData.Migrations
             context.PlantZones.AddRange(plantZones);
 
             List<PlantTypes> plantTypes = new List<PlantTypes>();
-            plantTypes.Add(new PlantTypes { PlantTypeID = 1, Name = "Wildflower",Description="They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            plantTypes.Add(new PlantTypes { PlantTypeID = 1, Name = "Wildflower", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             plantTypes.Add(new PlantTypes { PlantTypeID = 2, Name = "Thistle", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             plantTypes.Add(new PlantTypes { PlantTypeID = 3, Name = "Flower", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             plantTypes.Add(new PlantTypes { PlantTypeID = 4, Name = "Herb", Description = "They Grow", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
@@ -72,14 +72,14 @@ namespace GardenPlannerData.Migrations
             context.PlantTypes.AddRange(plantTypes);
 
             List<WaterNeeds> waterNeeds = new List<WaterNeeds>();
-            waterNeeds.Add(new WaterNeeds { WaterNeedID=1, Name="High", Description = "Plants need from 60 to 100 percent of the water needed for a grass lawn", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00)});
-            waterNeeds.Add(new WaterNeeds { WaterNeedID=2, Name = "Moderate", Description = "Plants need 30 to 60 percent of the water needed for a grass lawn", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
-            waterNeeds.Add(new WaterNeeds { WaterNeedID=3, Name = "Low", Description = "Plants need 10 to 30 percent of the water needed for a grass lawn", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
-            waterNeeds.Add(new WaterNeeds { WaterNeedID=4, Name = "Very Low", Description = "Plants need 10 percent or less of the water needed for a grass lawn", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            waterNeeds.Add(new WaterNeeds { WaterNeedID = 1, Name = "High", Description = "Plants need from 60 to 100 percent of the water needed for a grass lawn", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            waterNeeds.Add(new WaterNeeds { WaterNeedID = 2, Name = "Moderate", Description = "Plants need 30 to 60 percent of the water needed for a grass lawn", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            waterNeeds.Add(new WaterNeeds { WaterNeedID = 3, Name = "Low", Description = "Plants need 10 to 30 percent of the water needed for a grass lawn", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            waterNeeds.Add(new WaterNeeds { WaterNeedID = 4, Name = "Very Low", Description = "Plants need 10 percent or less of the water needed for a grass lawn", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             context.WaterNeeds.AddRange(waterNeeds);
 
             List<RootStructure> rootStructures = new List<RootStructure>();
-            rootStructures.Add(new RootStructure { RootStructureID = 1, Name= "Fibrous Roots", Description= "Fibrous roots are found in monocot plants. They are slender, branched, and grow directly from the stem. These roots tend to grow close to the surface and spread horizontally. They are characterized by a cluster-like appearance with numerous roots together, all nearly of the same size. In the fibrous root system, the primary root is short-lived. It is replaced by numerous roots. Fibrous root system does not provide strong anchorage to the plant as they do not penetrate deep into the soil.", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            rootStructures.Add(new RootStructure { RootStructureID = 1, Name = "Fibrous Roots", Description = "Fibrous roots are found in monocot plants. They are slender, branched, and grow directly from the stem. These roots tend to grow close to the surface and spread horizontally. They are characterized by a cluster-like appearance with numerous roots together, all nearly of the same size. In the fibrous root system, the primary root is short-lived. It is replaced by numerous roots. Fibrous root system does not provide strong anchorage to the plant as they do not penetrate deep into the soil.", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             rootStructures.Add(new RootStructure { RootStructureID = 2, Name = "Taproots", Description = "Taproots are found in the majority of dicot plants. This type of root is a direct elongation of the radical. Unlike fibrous roots, taproots are not branches. Instead, they are a single primary root that grows deep into the soil. A taproot gives rise to lateral branches (secondary and tertiary roots) leading to the formation of a taproot system. The branches of a taproot grow in acropetal succession which means, the longer and older ones are present at the base while newer, shorter ones are near the apex of the primary root. Taproot system provides a very strong anchorage. The reason for this strong support is that they penetrate deep into the soil. In some plants, the taproot does not grow too deep. Instead, its lateral branches grow longer horizontally along the surface. These types of roots are called feeder roots.", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             rootStructures.Add(new RootStructure { RootStructureID = 3, Name = "Adventitious Roots", Description = "Adventitious roots are similar to the fibrous roots. However, they can be underground or aerial (above the ground). They can grow from any part of the plant except the radical. Usually, they grow from intermodal, stem nodes, and leaves. These roots can be thick, thin, or modified according to the species. Adventitious roots arise under stress conditions such as waterlogging after floods. Leaf cuttings and branch cuttings in plants such as rose can result in the development of adventitious roots. They also develop in cases of plant injury. They can increase the survival chances of a plant as the plant propagates itself with the assistance of adventitious roots.", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             rootStructures.Add(new RootStructure { RootStructureID = 4, Name = "Creeping Roots", Description = "Creeping roots are the types of roots that do not penetrate deep into the soil. They are shallow and spread a long way horizontally from the base of the plant. Many trees have creeping roots.", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
@@ -89,11 +89,15 @@ namespace GardenPlannerData.Migrations
             context.RootStructure.AddRange(rootStructures);
 
             List<SunExposures> sunExposures = new List<SunExposures>();
-            sunExposures.Add(new SunExposures { SunExposureID=1, Name= "Full Sun", Description= "Plants need at least 6 hours of direct sun daily", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
-            sunExposures.Add(new SunExposures { SunExposureID=2, Name= "Part Sun", Description= "Plants thrive with between 3 and 6 hours of direct sun per day", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
-            sunExposures.Add(new SunExposures { SunExposureID=3, Name= "Part Shade", Description= "Plants require between 3 and 6 hours of sun per day, but need protection from intense mid-day sun", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
-            sunExposures.Add(new SunExposures { SunExposureID=4, Name= "Full Shade", Description= "Plants require less than 3 hours of direct sun per day", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            sunExposures.Add(new SunExposures { SunExposureID = 1, Name = "Full Sun", Description = "Plants need at least 6 hours of direct sun daily", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            sunExposures.Add(new SunExposures { SunExposureID = 2, Name = "Part Sun", Description = "Plants thrive with between 3 and 6 hours of direct sun per day", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            sunExposures.Add(new SunExposures { SunExposureID = 3, Name = "Part Shade", Description = "Plants require between 3 and 6 hours of sun per day, but need protection from intense mid-day sun", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
+            sunExposures.Add(new SunExposures { SunExposureID = 4, Name = "Full Shade", Description = "Plants require less than 3 hours of direct sun per day", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             context.SunExposures.AddRange(sunExposures);
+
+            context.UserRoles.Add(new UserRoles { Name = "Admin", Description = "All powerful" });
+            context.UserRoles.Add(new UserRoles { Name = "Moderator", Description = "Can Update Some Tables" });
+            context.UserRoles.Add(new UserRoles { Name = "End User", Description = "Can Comment, Ask questions, add to MyPlants Table" });
 
             base.Seed(context);
         }

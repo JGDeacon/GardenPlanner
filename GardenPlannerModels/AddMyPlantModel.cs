@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace GardenPlannerModels
 {
-    public class MyPlantsModel
+    public class AddMyPlantModel
     {
         [MaxLength(500)]
         public string Location { get; set; }
         public string PlantName { get; set; }
+        public int PlantID { get; set; }
         public DateTimeOffset DatePlanted { get; set; }
 
         [MaxLength(3000)]

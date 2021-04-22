@@ -12,6 +12,14 @@ namespace GardenPlannerServices
     public class PlantService
     {
         protected readonly ApplicationDbContext ctx = new ApplicationDbContext();
+
+        public IEnumerable<PlantDetailsModel> GetAllPlants()
+        {
+            var query = ctx.Plants.Where(e => e.PlantID >= 1).Select(f => BuildPlantDetailsModel(f));
+
+            return query.ToList();
+        }
+
         public IEnumerable<PlantDetailsModel> GetPlantByType(int plantTypeID)
         {
             var query = ctx.Plants.Where(e => e.PlantTypeID == plantTypeID).Select(f => BuildPlantDetailsModel(f));
@@ -40,8 +48,6 @@ namespace GardenPlannerServices
             return query.ToList();
         }
 
-       
-
         public IEnumerable<PlantDetailsModel> GetPlantsByHeightMax(double plantHeightMax)
         {
             var query = ctx.PlantDetails.Where(e => e.PlantHeightMax == plantHeightMax).Select(f => BuildPlantDetailsModel(f));
@@ -60,7 +66,6 @@ namespace GardenPlannerServices
         }
 
         public IEnumerable<PlantDetailsModel> GetPlantByZoneAndSeason(int zoneId, int seasonID)
-
         {
             var query = ctx.Plants.Where(e => e.ZoneID == zoneId && e.SeasonID == seasonID).Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
@@ -69,8 +74,17 @@ namespace GardenPlannerServices
         {
             var query = ctx.PlantDetails.Where(e => e.DaysToGerminate == daysToGerminate).Select(f => BuildPlantDetailsModel(f));         
             return query.ToList();        
-        }             
+        }
 
+        //Need to check (Not sure) how it works 
+        public IEnumerable<PlantDetailsModel> GetPlantByDaysToMedicianlResistanceAndToxicity()
+        {
+          var query =
+                 ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).Select(f => BuildPlantDetailsModel(f));
+
+            return query.ToList();
+        }
+     
         private PlantDetailsModel BuildPlantDetailsModel(Plants plant)
         {
             PlantDetailsModel plantDetailsModel = new PlantDetailsModel

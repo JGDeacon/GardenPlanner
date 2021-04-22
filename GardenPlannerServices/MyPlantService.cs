@@ -46,10 +46,10 @@ namespace GardenPlannerServices
             ctx.MyPlants.Add(myPlants);
             return ctx.SaveChanges() == 1;
         }
-        public bool AddNote(int myPlantID, string newNote)
+        public bool AddNote(AddNotesToMyPlant model)
         {
-            MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == myPlantID);
-            myPlants.Notes = newNote;
+            MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == model.MyPlantID);
+            myPlants.Notes = model.Notes;
             return ctx.SaveChanges() == 1;
         }
         public bool DeleteMyPlant(int myPlantID)
@@ -58,11 +58,11 @@ namespace GardenPlannerServices
             ctx.MyPlants.Remove(myPlants);
             return ctx.SaveChanges() == 1;
         }
-        public bool UpdateMyPlant(int myPlantID, AddMyPlantModel model)
+        public bool UpdateMyPlant(UpdateMyPlantModel model)
         {
-            MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == myPlantID);
+            MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == model.MyPlantID);
             myPlants.Location = model.Location;
-            myPlants.PlantID = model.PlantID;
+            myPlants.PlantID = model.MyPlantID;
             myPlants.DatePlanted = model.DatePlanted;
             myPlants.Photo = model.Photo;
             myPlants.Notes = model.Notes;

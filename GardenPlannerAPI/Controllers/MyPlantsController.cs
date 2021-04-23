@@ -32,7 +32,7 @@ namespace GardenPlannerAPI.Controllers
 
             return Ok("New plant has been added to the MyPlants");
         }
-
+        [Route("api/Note")]
         public IHttpActionResult AddNote(AddNotesToMyPlant addNotes)
         {
             if (!ModelState.IsValid)

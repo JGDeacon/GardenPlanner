@@ -445,7 +445,6 @@ namespace GardenPlannerServices
                     Name = ctx.SunExposures.Single(r => r.SunExposureID == ctx.PlantCare.Single(s => s.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantCareID).SunExposureID).Name,
                     Description = ctx.SunExposures.Single(r => r.SunExposureID == ctx.PlantCare.Single(s => s.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == f.PlantDetailsID).PlantCareID).SunExposureID).Description
 
-
                 },
 
 
@@ -463,6 +462,7 @@ namespace GardenPlannerServices
             });
             return query.ToList();
         }
+
 
         public IEnumerable<PlantDetailsModel> GetPerrenialPlants()
         {

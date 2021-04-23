@@ -24,7 +24,7 @@ namespace GardenPlannerData
 
         public double PlantHeightMax { get; set; }
 
-        public double PlantWidthtMax { get; set; }
+        public double PlantWidthMax { get; set; }
 
         public double SeedSpacing { get; set; }
 

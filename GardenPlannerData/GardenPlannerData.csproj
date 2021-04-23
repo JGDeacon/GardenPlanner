@@ -147,6 +147,10 @@
     <Compile Include="Migrations\202104212106047_All.Designer.cs">
       <DependentUpon>202104212106047_All.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104230107454_UpdatedModelsToSpellWidthCorrectly.cs" />
+    <Compile Include="Migrations\202104230107454_UpdatedModelsToSpellWidthCorrectly.designer.cs">
+      <DependentUpon>202104230107454_UpdatedModelsToSpellWidthCorrectly.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyPlants.cs" />
     <Compile Include="PlantCare.cs" />
@@ -169,6 +173,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104212106047_All.resx">
       <DependentUpon>202104212106047_All.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104230107454_UpdatedModelsToSpellWidthCorrectly.resx">
+      <DependentUpon>202104230107454_UpdatedModelsToSpellWidthCorrectly.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

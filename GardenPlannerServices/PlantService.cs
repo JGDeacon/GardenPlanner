@@ -98,15 +98,6 @@ namespace GardenPlannerServices
             return query.ToList();
         }
 
-
-        public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID)
-        {
-            var query = ctx.Plants.Where(e => e.ZoneID == zoneID).Select(f => BuildPlantDetailsModel(f));
-            return query.ToList();
-
-
-        }
-
         public IEnumerable<PlantDetailsModel> GetPerrenialPlants()
         {
             var query = ctx.PlantDetails.Where(e => e.IsPerennial == true).Select(f => BuildPlantDetailsModel(f));

@@ -331,7 +331,7 @@ namespace GardenPlannerAPI.Controllers
 
             var user = new ApplicationUser() 
             { 
-                UserName = model.Username, Email = model.Email, RoleID = 3, 
+                UserName = model.Username, Email = model.Email, RoleID = 3, CreatedDate = DateTimeOffset.UtcNow,
                 Answer = true, WhenToWater = true, WhenToPlant = true, PlantBloom = true, PlantAdded = true 
             };
 

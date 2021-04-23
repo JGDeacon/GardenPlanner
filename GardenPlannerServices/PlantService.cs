@@ -22,6 +22,37 @@ namespace GardenPlannerServices
 
         public bool AddPlant(AddPlantModel model)
         {
+            PlantCare plantCare = new PlantCare
+            {
+                SunExposureID = model.SunExposureID,
+                WaterNeedID = model.WaterNeedID,
+                Temperature = model.Temperature,
+                Description = model.PlantCareDescription,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
+            ctx.PlantCare.Add(plantCare);
+            
+            PlantDetails plantDetails = new PlantDetails
+            {
+                DaysToGerminate = model.DaysToGerminate,
+                DaysToHarvest = model.DaysToHarvest,
+                SeedDepth = model.SeedDepth,
+                IsPerennial = model.IsPerennial,
+                PlantHeightMax = model.PlantHeightMax,
+                PlantWidthMax = model.PlantWidthMax,
+                SeedSpacing = model.SeedSpacing,
+                RowSpacing = model.RowSpacing,
+                RootStructureID = model.RootStructureID,
+                IsDeerResistant = model.IsDeerResistant,
+                IsToxicToAnimal = model.IsToxicToAnimal,
+                IsToxicToHuman = model.IsToxicToHuman,
+                IsMedicinal = model.IsMedicinal,
+                Image = model.Image,
+                Description = model.PlantDetailsDescription,
+                CreatedDate = DateTimeOffset.UtcNow
+            };
+            ctx.PlantDetails.Add(plantDetails);
+            ctx.SaveChanges();
             Plants newPlant = new Plants
             {
                 Name = model.Name,
@@ -29,15 +60,24 @@ namespace GardenPlannerServices
                 ZoneID = model.ZoneID,
                 SeasonID = model.SeasonID,
                 PlantTypeID = model.PlantTypeID,
-                PlantCareID = model.PlantCareID,
-                PlantDetailsID = model.PlantDetailsID,
+                PlantCareID = plantCare.PlantCareID,
+                PlantDetailsID = plantDetails.PlantDetailsID,
                 CreatedDate = DateTimeOffset.UtcNow
             };
             ctx.Plants.Add(newPlant);
             return ctx.SaveChanges() == 1;
         }
-        public bool UpdatePlant(int plantID, AddPlantModel model)
+        public bool UpdatePlant(int plantID, UpdatePlantModel model)
         {
+            PlantCare plantCare = ctx.PlantCare.Single(e => e.PlantCareID == model.PlantCareID);
+            {
+                plantCare.SunExposureID = model.SunExposureID;
+                plantCare.WaterNeedID = model.WaterNeedID;
+                plantCare.Temperature = model.Temperature;
+                plantCare.Description = model.Description;
+                plantCare.ModifiedDate = DateTimeOffset.UtcNow;
+            }
+
             Plants plants = ctx.Plants.Single(e => e.PlantID == plantID);
             plants.Name = model.Name;
             plants.ScientificName = model.ScientificName;
@@ -47,7 +87,7 @@ namespace GardenPlannerServices
             plants.PlantCareID = model.PlantCareID;
             plants.PlantDetailsID = model.PlantDetailsID;
             plants.ModifiedDate = DateTimeOffset.UtcNow;
-            return ctx.SaveChanges() == 1;
+            return ctx.SaveChanges() == 2;
         }
         public IEnumerable<PlantDetailsModel> GetAllPlants()
         {
@@ -63,7 +103,7 @@ namespace GardenPlannerServices
         }
         public IEnumerable<PlantDetailsModel> GetPlantsByWidth(double min, double max)
         {
-            var query = ctx.PlantDetails.Where(e => (e.PlantWidthtMax >= min) && (max >= e.PlantWidthtMax)).Select(f => BuildPlantDetailsModel(f));
+            var query = ctx.PlantDetails.Where(e => (e.PlantWidthMax >= min) && (max >= e.PlantWidthMax)).Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
 
@@ -137,7 +177,7 @@ namespace GardenPlannerServices
                 SeedDepth = ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).SeedDepth,
                 IsPerennial = ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).IsPerennial,
                 PlantHeightMax = ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).PlantHeightMax,
-                PlantWidthtMax = ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).PlantWidthtMax,
+                PlantWidthtMax = ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).PlantWidthMax,
                 SeedSpacing = ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).SeedSpacing,
                 RowSpacing = ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).RowSpacing,
                 IsDeerResistant = ctx.PlantDetails.Single(z => z.PlantDetailsID == plant.PlantDetailsID).IsDeerResistant,
@@ -182,7 +222,7 @@ namespace GardenPlannerServices
                 SeedDepth = plantDetails.SeedDepth,
                 IsPerennial = plantDetails.IsPerennial,
                 PlantHeightMax = plantDetails.PlantHeightMax,
-                PlantWidthtMax = plantDetails.PlantWidthtMax,
+                PlantWidthtMax = plantDetails.PlantWidthMax,
                 SeedSpacing = plantDetails.SeedSpacing,
                 RowSpacing = plantDetails.RowSpacing,
                 IsDeerResistant = plantDetails.IsDeerResistant,

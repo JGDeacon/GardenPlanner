@@ -36,7 +36,7 @@ namespace GardenPlannerAPI.Controllers
             return Ok("New plant has been created");
         }
         //PUT
-        public IHttpActionResult Put(int plantID, AddPlantModel model)
+        public IHttpActionResult Put(int plantID, UpdatePlantModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

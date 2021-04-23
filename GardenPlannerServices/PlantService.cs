@@ -13,6 +13,13 @@ namespace GardenPlannerServices
     {
         protected readonly ApplicationDbContext ctx = new ApplicationDbContext();
 
+        private readonly Guid _userID;
+
+        public PlantService(Guid userID)
+        {
+            _userID = userID;
+        }
+
         public bool AddPlant(AddPlantModel model)
         {
             Plants newPlant = new Plants
@@ -71,6 +78,14 @@ namespace GardenPlannerServices
             return query.ToList();
         }
 
+
+
+        public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID)
+        {
+            var query = ctx.Plants.Where(e => e.ZoneID == zoneID).Select(f => BuildPlantDetailsModel(f)); return query.ToList();
+        }
+
+
         public IEnumerable<PlantDetailsModel> GetPlantsByBloomSeason(int seasonID)
         {
             var query = ctx.Plants.Where(e => e.SeasonID == seasonID).Select(f => BuildPlantDetailsModel(f));
@@ -81,12 +96,7 @@ namespace GardenPlannerServices
         {
             var query = ctx.PlantDetails.Where(e => e.PlantHeightMax == plantHeightMax).Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
-        }
-
-        public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID)
-        {
-            var query = ctx.Plants.Where(e => e.ZoneID == zoneID).Select(f => BuildPlantDetailsModel(f)); return query.ToList();
-        }
+        }       
 
         public IEnumerable<PlantDetailsModel> GetPerrenialPlants()
         {
@@ -101,19 +111,20 @@ namespace GardenPlannerServices
         }
         public IEnumerable<PlantDetailsModel> GetPlantByDaysToGerminate(int daysToGerminate)
         {
-            var query = ctx.PlantDetails.Where(e => e.DaysToGerminate == daysToGerminate).Select(f => BuildPlantDetailsModel(f));         
-            return query.ToList();        
+            var query = ctx.PlantDetails.Where(e => e.DaysToGerminate == daysToGerminate).Select(f => BuildPlantDetailsModel(f));
+            return query.ToList();
         }
 
         //Need to check (Not sure) how it works 
         public IEnumerable<PlantDetailsModel> GetPlantByDaysToMedicianlResistanceAndToxicity()
         {
-          var query =
-                 ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).Select(f => BuildPlantDetailsModel(f));
+            var query =
+                   ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).Select(f => BuildPlantDetailsModel(f));
 
             return query.ToList();
+
         }
-     
+
         private PlantDetailsModel BuildPlantDetailsModel(Plants plant)
         {
             PlantDetailsModel plantDetailsModel = new PlantDetailsModel
@@ -188,9 +199,14 @@ namespace GardenPlannerServices
                 {
                     Name = ctx.SunExposures.Single(r => r.SunExposureID == ctx.PlantCare.Single(s => s.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == plantDetails.PlantDetailsID).PlantCareID).SunExposureID).Name,
                     Description = ctx.SunExposures.Single(r => r.SunExposureID == ctx.PlantCare.Single(s => s.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == plantDetails.PlantDetailsID).PlantCareID).SunExposureID).Description
-                },
+
+
+                },    
+                 
+
                 WaterNeeds = new WaterNeedsModel
                 {
+
                     Name = ctx.WaterNeeds.Single(r => r.WaterNeedID == ctx.PlantCare.Single(s => s.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == plantDetails.PlantDetailsID).PlantCareID).SunExposureID).Name,
                     Description = ctx.WaterNeeds.Single(r => r.WaterNeedID == ctx.PlantCare.Single(s => s.PlantCareID == ctx.Plants.Single(z => z.PlantDetailsID == plantDetails.PlantDetailsID).PlantCareID).SunExposureID).Description
                 },
@@ -199,13 +215,9 @@ namespace GardenPlannerServices
                     Name = ctx.RootStructure.Single(r => r.RootStructureID == ctx.PlantDetails.Single(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Name,
                     Description = ctx.RootStructure.Single(r => r.RootStructureID == ctx.PlantDetails.Single(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Description
                 }
-
-
             };
-
             return plantDetailsModel;
-
         }
-
     }
 }
+

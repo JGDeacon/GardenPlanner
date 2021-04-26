@@ -1,5 +1,6 @@
 ﻿using GardenPlannerData;
 using GardenPlannerModels;
+using GardenPlannerModels.GetModels;
 using GardenPlannerModels.PlantDetailsModels;
 using System;
 using System.Collections.Generic;
@@ -203,6 +204,61 @@ namespace GardenPlannerServices
         public IEnumerable<PlantDetailsModel> GetPlantByDaysToMedicianlResistanceAndToxicity() //Not referenced
         {
             var query = ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).ToArray().Select(f => BuildPlantDetailsModel(f));
+            return query.ToList();
+        }
+        //PlantZone
+        public IEnumerable<GetPlantZonesModel> GetPlantZones()
+        {
+            var query = ctx.PlantZones.Where(e => e.ZoneID >= 1).Select(f => new GetPlantZonesModel
+            {
+                ZoneID = f.ZoneID,
+                ZoneCode = f.ZoneCode,
+                Description = f.Description,
+                CreatedDate = f.CreatedDate,
+                Modifiedate = f.Modifiedate
+            });
+            return query.ToList();
+        }
+
+        //Root Structure
+        public IEnumerable<GetRootStructureModel> GetRootStructure()
+        {
+            var query = ctx.RootStructure.Where(e => e.RootStructureID >=1).Select(f => new GetRootStructureModel
+            {
+                RootStructureID = f.RootStructureID,
+                Name = f.Name,
+                Description = f.Description,
+                CreatedDate = f.CreatedDate,
+                ModifiedDate = f.ModifiedDate
+            });
+            return query.ToList();
+        }
+
+        //SunExposure
+        public IEnumerable<GetSunExposureModel> GetSunExposure()
+        {
+            var query = ctx.SunExposures.Where(e => e.SunExposureID >= 1).Select(f => new GetSunExposureModel
+            {
+                SunExposureID = f.SunExposureID,
+                Name = f.Name,
+                Description = f.Description,
+                CreatedDate = f.CreatedDate,
+                ModifiedDate = f.ModifiedDate
+            });
+            return query.ToList();
+        }
+
+        //WaterNeeds
+        public IEnumerable<GetWaterNeedsModel> GetWaterNeeds()
+        {
+            var query = ctx.WaterNeeds.Where(e => e.WaterNeedID >= 1).Select(f => new GetWaterNeedsModel
+            {
+                WaterNeedID = f.WaterNeedID,
+                Name = f.Name,
+                Description = f.Description,
+                CreatedDate = f.CreatedDate,
+                ModifiedDate = f.ModifiedDate
+            });
             return query.ToList();
         }
 

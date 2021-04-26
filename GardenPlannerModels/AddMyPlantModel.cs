@@ -11,7 +11,7 @@ namespace GardenPlannerModels
     {
         [MaxLength(500)]
         public string Location { get; set; }
-        public string PlantName { get; set; }
+        public string PlantName { get; set; } // not needed...?
         public int PlantID { get; set; }
         public DateTimeOffset DatePlanted { get; set; }
 

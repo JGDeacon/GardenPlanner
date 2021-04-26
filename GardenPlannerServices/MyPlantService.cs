@@ -16,12 +16,13 @@ namespace GardenPlannerServices
         {
             _userID = userID;
         }
-        public IEnumerable<AddMyPlantModel> GetMyPlants()
+        public IEnumerable<AddMyPlantModel> GetMyPlants() 
         {
             var query = ctx.MyPlants.Where(e => e.UserID == _userID).Select(e => new AddMyPlantModel
             {
                 Location = e.Location,
-                PlantName = ctx.Plants.Single(f => f.PlantID == e.PlantID).Name,
+                PlantID = e.PlantID,
+                PlantName = ctx.Plants.FirstOrDefault(f => f.PlantID == e.PlantID).Name,
                 DatePlanted = e.DatePlanted,
                 Notes = e.Notes,
                 Year = e.Year,

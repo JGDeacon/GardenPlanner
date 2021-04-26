@@ -187,9 +187,9 @@ namespace GardenPlannerServices
             var query = ctx.Plants.Where(e => e.ZoneID == zoneId && e.SeasonID == seasonID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
-        public IEnumerable<PlantDetailsModel> GetPlantByDaysToGerminate(int daysToGerminate) // Working but very specific. Should be a range
+        public IEnumerable<PlantDetailsModel> GetPlantByDaysToGerminate(int minDays, int maxDays) // Working but very specific. Should be a range
         {
-            List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => e.DaysToGerminate == daysToGerminate).ToList();
+            List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => e.DaysToGerminate >= minDays && e.DaysToGerminate <= maxDays).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
 
             foreach (PlantDetails item in plantDetails)

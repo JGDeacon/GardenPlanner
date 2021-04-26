@@ -121,10 +121,10 @@ namespace GardenPlannerAPI.Controllers
             return Ok(plants);
         }
         [Route("api/Plants/Feature")]
-        public IHttpActionResult GetDaysToGerminate(int daysToGerminate) // not working
+        public IHttpActionResult GetDaysToGerminate(int minDays, int maxDays) // not working
         {
             PlantService plantService = CreatePlantService();
-            var plants = plantService.GetPlantByDaysToGerminate(daysToGerminate);
+            var plants = plantService.GetPlantByDaysToGerminate(minDays,maxDays);
             return Ok(plants);
         }
         [Route("api/PlantSeasons")]

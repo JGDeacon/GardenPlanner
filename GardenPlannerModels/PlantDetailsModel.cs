@@ -11,6 +11,7 @@ namespace GardenPlannerModels
 {
     public class PlantDetailsModel
     {
+        public int PlantID { get; set; }
         public string Name { get; set; }
 
         public string ScientificName { get; set; }

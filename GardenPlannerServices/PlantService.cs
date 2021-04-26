@@ -70,14 +70,14 @@ namespace GardenPlannerServices
         }
         public bool UpdatePlant(int plantID, UpdatePlantModel model)
         {
-            PlantCare plantCare = ctx.PlantCare.Single(e => e.PlantCareID == model.PlantCareID);
-            {
+            PlantCare plantCare = ctx.PlantCare.FirstOrDefault(e => e.PlantCareID == model.PlantCareID);
+            //{
                 plantCare.SunExposureID = model.SunExposureID;
                 plantCare.WaterNeedID = model.WaterNeedID;
                 plantCare.Temperature = model.Temperature;
                 plantCare.Description = model.Description;
                 plantCare.ModifiedDate = DateTimeOffset.UtcNow;
-            }
+            //}
 
             Plants plants = ctx.Plants.Single(e => e.PlantID == plantID);
             plants.Name = model.Name;

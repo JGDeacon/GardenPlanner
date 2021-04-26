@@ -16,6 +16,7 @@ namespace GardenPlannerData
         [ForeignKey(nameof(Plants))]
         public int PlantID { get; set; }
         public Plants Plants { get; set; }
+        public Guid UserID { get; set; }
         public DateTimeOffset CreatedDate { get; set; }
         public DateTimeOffset? ModifiedDate { get; set; }
     }

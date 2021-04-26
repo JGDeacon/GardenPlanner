@@ -9,8 +9,8 @@ namespace GardenPlannerModels.CommentModels
     public class GetCommentsModel
     {
         public int PlantID { get; set; }
-        public string PlantName { get; set; }   
-        public List<CommentModel> Comments { get; set; }
+        public string PlantName { get; set; }
+        public List<CommentModel> Comments { get; set; } = new List<CommentModel>();
         public int Likes { get; set; }
     }
 }

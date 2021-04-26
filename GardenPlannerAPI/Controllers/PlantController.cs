@@ -169,5 +169,13 @@ namespace GardenPlannerAPI.Controllers
             var waterNeeds = plantService.GetWaterNeeds();
             return Ok(waterNeeds);
         }
+        //Added Medicinal/Toxicity
+        [Route("api/SpecialDetails")]
+        public IHttpActionResult GetPlantByMedicianlResistanceAndToxicity(GetSpecialDetailsModel model)
+        {
+            PlantService plantService = CreatePlantService();
+            var specialDetails = plantService.GetPlantByMedicianlResistanceAndToxicity(model);
+            return Ok(specialDetails);
+        }
     }
 }

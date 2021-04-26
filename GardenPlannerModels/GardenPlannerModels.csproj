@@ -79,6 +79,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNotesToMyPlant.cs" />
+    <Compile Include="GetModels\GetPlantBySeasonIDModel.cs" />
     <Compile Include="GetModels\GetPlantByZoneIDModel.cs" />
     <Compile Include="GetModels\GetRootStructureModel.cs" />
     <Compile Include="GetModels\GetSunExposureModel.cs" />

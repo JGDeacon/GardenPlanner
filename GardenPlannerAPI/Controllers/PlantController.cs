@@ -71,21 +71,21 @@ namespace GardenPlannerAPI.Controllers
             var plants = plantService.GetPlantsByWidth(min, max);
             return Ok(plants);
         }
-        [Route("api/Plants/Sun")]
+        [Route("api/Plants/Sun")] // We need a get Exposures
         public IHttpActionResult GetSunExposure(int sunExposureID)
         {
             PlantService plantService = CreatePlantService();
             var plants = plantService.GetPlantsBySunExposure(sunExposureID);
             return Ok(plants);
         }
-        [Route("api/Plants/Water")]
+        [Route("api/Plants/Water")] // We need a get waterneeds
         public IHttpActionResult GetWaterNeed(int waterNeedID)
         {
             PlantService plantService = CreatePlantService();
             var plants = plantService.GetPlantsByWaterNeed(waterNeedID);
             return Ok(plants);
         }
-        [Route("api/Plants/Bloom")]
+        [Route("api/Plants/Bloom")] // We need a get Seasons
         public IHttpActionResult GetBloomSeason(int seasonID)
         {
             PlantService plantService = CreatePlantService();
@@ -99,7 +99,7 @@ namespace GardenPlannerAPI.Controllers
             var plants = plantService.GetPlantsByHeightMax(plantHeightMax);
             return Ok(plants);
         }
-        [Route("api/Plants/Zone")]
+        [Route("api/Plants/Zone")] // We need a get Zones
         public IHttpActionResult GetPlantZone(int zoneID)
         {
             PlantService plantService = CreatePlantService();
@@ -121,7 +121,7 @@ namespace GardenPlannerAPI.Controllers
             return Ok(plants);
         }
         [Route("api/Plants/Feature")]
-        public IHttpActionResult GetDaysToGerminate(int daysToGerminate)
+        public IHttpActionResult GetDaysToGerminate(int daysToGerminate) // not working
         {
             PlantService plantService = CreatePlantService();
             var plants = plantService.GetPlantByDaysToGerminate(daysToGerminate);

@@ -79,6 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNotesToMyPlant.cs" />
+    <Compile Include="AnswerModels\AddAnswerModel.cs" />
+    <Compile Include="AnswerModels\AnswerModel.cs" />
     <Compile Include="CommentModels\AddCommentModel.cs" />
     <Compile Include="CommentModels\CommentModel.cs" />
     <Compile Include="CommentModels\GetCommentsModel.cs" />
@@ -103,6 +105,9 @@
     <Compile Include="PlantDetailsModels\WaterNeedsModel.cs" />
     <Compile Include="PlantDetailsModels\SunExposureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionModels\AddQuestionModel.cs" />
+    <Compile Include="QuestionModels\GetQuestionAnswerModel.cs" />
+    <Compile Include="QuestionModels\GetQuestionsModel.cs" />
     <Compile Include="UpdateMyPlantModel.cs" />
     <Compile Include="UpdatePlantModel.cs" />
   </ItemGroup>
@@ -116,10 +121,7 @@
       <Name>GardenPlannerData</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="AnswerModels\" />
-    <Folder Include="QuestionModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -201,9 +201,14 @@ namespace GardenPlannerServices
         }
 
         //Need to check (Not sure) how it works 
-        public IEnumerable<PlantDetailsModel> GetPlantByDaysToMedicianlResistanceAndToxicity() //Not referenced
+        //public IEnumerable<PlantDetailsModel> GetPlantByDaysToMedicianlResistanceAndToxicity() //Not referenced
+        //{
+        //    var query = ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).ToArray().Select(f => BuildPlantDetailsModel(f));
+        //    return query.ToList();
+        //}
+        public IEnumerable<PlantDetailsModel> GetPlantByMedicianlResistanceAndToxicity(GetSpecialDetailsModel model) //Not referenced
         {
-            var query = ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).ToArray().Select(f => BuildPlantDetailsModel(f));
+            var query = ctx.PlantDetails.Where(e => (e.IsMedicinal == model.IsMedicinal) || (e.IsDeerResistant == model.IsDeerResistant) || (e.IsToxicToAnimal == model.IsToxicToAnimal) || (e.IsToxicToHuman == model.IsToxicToHuman)).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
         //PlantZone

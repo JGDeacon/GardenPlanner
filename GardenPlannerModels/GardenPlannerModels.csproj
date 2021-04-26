@@ -99,6 +99,7 @@
     <Compile Include="PlantDetailsModels\WaterNeedsModel.cs" />
     <Compile Include="PlantDetailsModels\SunExposureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GetSpecialDetailsModel.cs" />
     <Compile Include="UpdateMyPlantModel.cs" />
     <Compile Include="UpdatePlantModel.cs" />
   </ItemGroup>

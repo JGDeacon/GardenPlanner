@@ -107,10 +107,10 @@ namespace GardenPlannerAPI.Controllers
             return Ok(plants);
         }
         [Route("api/Plants/Feature")]
-        public IHttpActionResult GetPerrenial() //missing
+        public IHttpActionResult GetPerrenial(bool selection) //missing
         {
             PlantService plantService = CreatePlantService();
-            var plants = plantService.GetPerrenialPlants();
+            var plants = plantService.GetPerrenialPlants(selection);
             return Ok(plants);
         }
         [Route("api/Plants/Feature")]

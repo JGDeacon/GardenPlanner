@@ -1,5 +1,6 @@
 ﻿using GardenPlannerData;
 using GardenPlannerModels;
+using GardenPlannerModels.GetModels;
 using GardenPlannerModels.PlantDetailsModels;
 using System;
 using System.Collections.Generic;
@@ -175,10 +176,9 @@ namespace GardenPlannerServices
             //return query.ToList();
         }
 
-        public IEnumerable<PlantDetailsModel> GetPerrenialPlants() // not working
-
+        public IEnumerable<PlantDetailsModel> GetPerrenialPlants(bool selection) //working
         {
-            var query = ctx.PlantDetails.Where(e => e.IsPerennial == true).ToArray().Select(f => BuildPlantDetailsModel(f));
+            var query = ctx.PlantDetails.Where(e => e.IsPerennial == selection).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
 
@@ -206,12 +206,119 @@ namespace GardenPlannerServices
             var query = ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
+        //PlantZone
+        public IEnumerable<GetPlantZonesModel> GetPlantZones()
+        {
+            var query = ctx.PlantZones.Where(e => e.ZoneID >= 1).Select(f => new GetPlantZonesModel
+            {
+                ZoneID = f.ZoneID,
+                ZoneCode = f.ZoneCode,
+                Description = f.Description,
+                CreatedDate = f.CreatedDate,
+                Modifiedate = f.Modifiedate
+            });
+            return query.ToList();
+        }
+
+        //Root Structure
+        public IEnumerable<GetRootStructureModel> GetRootStructure()
+        {
+            var query = ctx.RootStructure.Where(e => e.RootStructureID >=1).Select(f => new GetRootStructureModel
+            {
+                RootStructureID = f.RootStructureID,
+                Name = f.Name,
+                Description = f.Description,
+                CreatedDate = f.CreatedDate,
+                ModifiedDate = f.ModifiedDate
+            });
+            return query.ToList();
+        }
+
+        //SunExposure
+        public IEnumerable<GetSunExposureModel> GetSunExposure()
+        {
+            var query = ctx.SunExposures.Where(e => e.SunExposureID >= 1).Select(f => new GetSunExposureModel
+            {
+                SunExposureID = f.SunExposureID,
+                Name = f.Name,
+                Description = f.Description,
+                CreatedDate = f.CreatedDate,
+                ModifiedDate = f.ModifiedDate
+            });
+            return query.ToList();
+        }
+
+        //WaterNeeds
+        public IEnumerable<GetWaterNeedsModel> GetWaterNeeds()
+        {
+            var query = ctx.WaterNeeds.Where(e => e.WaterNeedID >= 1).Select(f => new GetWaterNeedsModel
+            {
+                WaterNeedID = f.WaterNeedID,
+                Name = f.Name,
+                Description = f.Description,
+                CreatedDate = f.CreatedDate,
+                ModifiedDate = f.ModifiedDate
+            });
+            return query.ToList();
+        }
+
+        //Get Methods
+
+        //Get PlantCare 
+        public IEnumerable<GetPlantCareModel> GetPlantCare()
+        {
+            var query = ctx.PlantCare.Where(e => e.PlantCareID >= 1).ToArray().Select(e => new GetPlantCareModel
+            {
+                PlantCareID = e.PlantCareID,
+                SunExposureID = e.SunExposureID,
+                WaterNeedID = e.WaterNeedID,
+                Temperature = e.Temperature,
+                Description = e.Description,
+                CreatedDate = e.CreatedDate,
+                ModifiedDate = e.ModifiedDate
+
+            });
+            return query.ToList();
+        }
+
+        //Get Plant Seasons
+        
+        public IEnumerable<GetPlantSeasonsModel> GetPlantSeasons()
+        {
+            var query = ctx.PlantSeasons.Where(e => e.SeasonID >= 1).Select(e => new GetPlantSeasonsModel
+            {
+                SeasonID = e.SeasonID,
+                Name = e.Name,
+                Description = e.Description,
+                CreatedDate = e.CreatedDate,
+                ModifiedDate = e.ModifiedDate
+               
+            });
+            return query.ToList();
+        }
+
+        //Get Plant Types
+
+        public IEnumerable<GetPlantTypesModel> GetPlantTypes()
+        {
+            var query = ctx.PlantTypes.Where(e => e.PlantTypeID >= 1).Select(e => new GetPlantTypesModel
+            {
+                PlantTypeID = e.PlantTypeID,
+                Name = e.Name,
+                Description = e.Description,
+                CreatedDate = e.CreatedDate,
+                ModifiedDate = e.ModifiedDate
+
+            });
+            return query.ToList();
+          
+        }
 
         private PlantDetailsModel BuildPlantDetailsModel(Plants plant)
         {
             PlantDetailsModel plantDetailsModel = new PlantDetailsModel
             {
-
+                PlantID = plant.PlantID,
                 Name = plant.Name,
                 ScientificName = plant.ScientificName,
                 DaysToGerminate = ctx.PlantDetails.FirstOrDefault(z => z.PlantDetailsID == plant.PlantDetailsID).DaysToGerminate,
@@ -258,8 +365,9 @@ namespace GardenPlannerServices
             
             PlantDetailsModel plantDetailsModel = new PlantDetailsModel
             {
-                Name = ctx.Plants.FirstOrDefault(z => z.PlantID == plantDetails.PlantDetailsID).Name,
-                ScientificName = ctx.Plants.FirstOrDefault(z => z.PlantID == plantDetails.PlantDetailsID).Name,
+                PlantID = ctx.Plants.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).PlantID,
+                Name = ctx.Plants.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).Name,
+                ScientificName = ctx.Plants.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).ScientificName,
                 DaysToGerminate = plantDetails.DaysToGerminate,
                 DaysToHarvest = plantDetails.DaysToHarvest,
                 SeedDepth = plantDetails.SeedDepth,

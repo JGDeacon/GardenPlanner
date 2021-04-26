@@ -86,13 +86,17 @@ namespace GardenPlannerAPI.Controllers
             var plants = plantService.GetPlantsByWaterNeed(waterNeedID);
             return Ok(plants);
         }
+       
         [Route("api/Plants/Bloom")] // We need a get Seasons
-        public IHttpActionResult GetBloomSeason(int seasonID)
+        public IHttpActionResult GetBloomSeason(GetPlantBySeasonIDModel model)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             PlantService plantService = CreatePlantService();
-            var plants = plantService.GetPlantsByBloomSeason(seasonID);
+            var plants = plantService.GetPlantsByBloomSeason(model.SeasonID);
             return Ok(plants);
         }
+
         [Route("api/Plants/Height")]
         public IHttpActionResult GetHeightMax(double plantHeightMax)
         {

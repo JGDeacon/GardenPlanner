@@ -7,13 +7,13 @@ namespace GardenPlannerData.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class UpdatedModelsToSpellWidthCorrectly : IMigrationMetadata
+    public sealed partial class Initial2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdatedModelsToSpellWidthCorrectly));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial2));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104230107454_UpdatedModelsToSpellWidthCorrectly"; }
+            get { return "202104261325360_Initial2"; }
         }
         
         string IMigrationMetadata.Source

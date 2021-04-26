@@ -164,6 +164,7 @@ namespace GardenPlannerServices
             List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => e.PlantHeightMax == plantHeightMax).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
 
+
             foreach (PlantDetails item in plantDetails)
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantDetailsID == item.PlantDetailsID)));
@@ -175,6 +176,7 @@ namespace GardenPlannerServices
         }
 
         public IEnumerable<PlantDetailsModel> GetPerrenialPlants() // not working
+
         {
             var query = ctx.PlantDetails.Where(e => e.IsPerennial == true).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();

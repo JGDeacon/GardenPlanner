@@ -78,22 +78,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="202104211724182_initial.cs" />
-    <Compile Include="202104211724182_initial.Designer.cs">
-      <DependentUpon>202104211724182_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="202104211728582_Guid.cs" />
-    <Compile Include="202104211728582_Guid.Designer.cs">
-      <DependentUpon>202104211728582_Guid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="202104212023149_SocialTables.cs" />
-    <Compile Include="202104212023149_SocialTables.Designer.cs">
-      <DependentUpon>202104212023149_SocialTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="202104212027513_ApplicationUser.cs" />
-    <Compile Include="202104212027513_ApplicationUser.Designer.cs">
-      <DependentUpon>202104212027513_ApplicationUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="AddNotesToMyPlant.cs" />
     <Compile Include="GetModels\GetRootStructureModel.cs" />
     <Compile Include="GetModels\GetSunExposureModel.cs" />
@@ -105,6 +89,7 @@
     <Compile Include="GetModels\GetPlantZonesModel.cs" />
     <Compile Include="AddMyPlantModel.cs" />
     <Compile Include="AddPlantCare.cs" />
+    <Compile Include="GetMyPlantModel.cs" />
     <Compile Include="PlantDetailsModel.cs" />
     <Compile Include="PlantDetailsModels\PlantCareModel.cs" />
     <Compile Include="PlantDetailsModels\PlantSeasonsModel.cs" />
@@ -126,20 +111,6 @@
       <Project>{70F077C1-0069-46AB-B79B-34AFD988DAC5}</Project>
       <Name>GardenPlannerData</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="202104211724182_initial.resx">
-      <DependentUpon>202104211724182_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="202104211728582_Guid.resx">
-      <DependentUpon>202104211728582_Guid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="202104212023149_SocialTables.resx">
-      <DependentUpon>202104212023149_SocialTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="202104212027513_ApplicationUser.resx">
-      <DependentUpon>202104212027513_ApplicationUser.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

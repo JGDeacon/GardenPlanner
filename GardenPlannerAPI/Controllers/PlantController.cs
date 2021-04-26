@@ -127,5 +127,47 @@ namespace GardenPlannerAPI.Controllers
             var plants = plantService.GetPlantByDaysToGerminate(daysToGerminate);
             return Ok(plants);
         }
+        [Route("api/PlantSeasons")]
+        public IHttpActionResult GetSeasons()
+        {
+            PlantService plantService = CreatePlantService();
+            var seasons = plantService.GetPlantSeasons();
+            return Ok(seasons);
+        }
+        [Route("api/PlantTypes")]
+        public IHttpActionResult GetTypes()
+        {
+            PlantService plantService = CreatePlantService();
+            var types = plantService.GetPlantTypes();
+            return Ok(types);
+        }
+        [Route("api/PlantZones")]
+        public IHttpActionResult GetZones()
+        {
+            PlantService plantService = CreatePlantService();
+            var zones = plantService.GetPlantZones();
+            return Ok(zones);
+        }
+        [Route("api/RootStructure")]
+        public IHttpActionResult GetRootStructures()
+        {
+            PlantService plantService = CreatePlantService();
+            var rootStructures = plantService.GetRootStructure();
+            return Ok(rootStructures);
+        }
+        [Route("api/SunExposures")]
+        public IHttpActionResult GetSunExposure()
+        {
+            PlantService plantService = CreatePlantService();
+            var sunExposures = plantService.GetSunExposure();
+            return Ok(sunExposures);
+        }
+        [Route("api/WaterNeeds")]
+        public IHttpActionResult GetWaterNeeds()
+        {
+            PlantService plantService = CreatePlantService();
+            var waterNeeds = plantService.GetWaterNeeds();
+            return Ok(waterNeeds);
+        }
     }
 }

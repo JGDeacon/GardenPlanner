@@ -265,7 +265,7 @@ namespace GardenPlannerServices
         //Get Methods
 
         //Get PlantCare 
-        public IEnumerable<GetPlantCareModel> GetPlantCares()
+        public IEnumerable<GetPlantCareModel> GetPlantCare()
         {
             var query = ctx.PlantCare.Where(e => e.PlantCareID >= 1).ToArray().Select(e => new GetPlantCareModel
             {

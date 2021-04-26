@@ -1,4 +1,5 @@
 ﻿using GardenPlannerModels;
+using GardenPlannerModels.GetModels;
 using GardenPlannerServices;
 using Microsoft.AspNet.Identity;
 using System;
@@ -100,10 +101,14 @@ namespace GardenPlannerAPI.Controllers
             return Ok(plants);
         }
         [Route("api/Plants/Zone")] // We need a get Zones
-        public IHttpActionResult GetPlantZone(int zoneID)
+        public IHttpActionResult GetPlantZone(GetPlantByZoneIDModel model)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
             PlantService plantService = CreatePlantService();
-            var plants = plantService.GetPlantByPlantZone(zoneID);
+            var plants = plantService.GetPlantByPlantZone(model.ZoneID);
+            //if (zoneID >= 14)
+            //    return BadRequest("Please enter valid number from 1-13");
             return Ok(plants);
         }
         [Route("api/Plants/Feature")]

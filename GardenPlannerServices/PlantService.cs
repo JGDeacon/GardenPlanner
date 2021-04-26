@@ -176,7 +176,6 @@ namespace GardenPlannerServices
         }
 
         public IEnumerable<PlantDetailsModel> GetPerrenialPlants() // not working
-
         {
             var query = ctx.PlantDetails.Where(e => e.IsPerennial == true).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
@@ -205,6 +204,58 @@ namespace GardenPlannerServices
         {
             var query = ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
+        }
+
+        //Get Methods
+
+        //Get PlantCare 
+        public IEnumerable<GetPlantCareModel> GetPlantCares()
+        {
+            var query = ctx.PlantCare.Where(e => e.PlantCareID >= 1).ToArray().Select(e => new GetPlantCareModel
+            {
+                PlantCareID = e.PlantCareID,
+                SunExposureID = e.SunExposureID,
+                WaterNeedID = e.WaterNeedID,
+                Temperature = e.Temperature,
+                Description = e.Description,
+                CreatedDate = e.CreatedDate,
+                ModifiedDate = e.ModifiedDate
+
+            });
+            return query.ToList();
+        }
+
+        //Get Plant Seasons
+        
+        public IEnumerable<GetPlantSeasonsModel> GetPlantSeasons()
+        {
+            var query = ctx.PlantSeasons.Where(e => e.SeasonID >= 1).Select(e => new GetPlantSeasonsModel
+            {
+                SeasonID = e.SeasonID,
+                Name = e.Name,
+                Description = e.Description,
+                CreatedDate = e.CreatedDate,
+                ModifiedDate = e.ModifiedDate
+               
+            });
+            return query.ToList();
+        }
+
+        //Get Plant Types
+
+        public IEnumerable<GetPlantTypesModel> GetPlantTypes()
+        {
+            var query = ctx.PlantTypes.Where(e => e.PlantTypeID >= 1).Select(e => new GetPlantTypesModel
+            {
+                PlantTypeID = e.PlantTypeID,
+                Name = e.Name,
+                Description = e.Description,
+                CreatedDate = e.CreatedDate,
+                ModifiedDate = e.ModifiedDate
+
+            });
+            return query.ToList();
+          
         }
 
         private PlantDetailsModel BuildPlantDetailsModel(Plants plant)

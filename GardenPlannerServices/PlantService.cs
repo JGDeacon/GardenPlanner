@@ -211,7 +211,7 @@ namespace GardenPlannerServices
         {
             PlantDetailsModel plantDetailsModel = new PlantDetailsModel
             {
-
+                PlantID = plant.PlantID,
                 Name = plant.Name,
                 ScientificName = plant.ScientificName,
                 DaysToGerminate = ctx.PlantDetails.FirstOrDefault(z => z.PlantDetailsID == plant.PlantDetailsID).DaysToGerminate,
@@ -258,8 +258,9 @@ namespace GardenPlannerServices
             
             PlantDetailsModel plantDetailsModel = new PlantDetailsModel
             {
-                Name = ctx.Plants.FirstOrDefault(z => z.PlantID == plantDetails.PlantDetailsID).Name,
-                ScientificName = ctx.Plants.FirstOrDefault(z => z.PlantID == plantDetails.PlantDetailsID).Name,
+                PlantID = ctx.Plants.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).PlantID,
+                Name = ctx.Plants.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).Name,
+                ScientificName = ctx.Plants.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).ScientificName,
                 DaysToGerminate = plantDetails.DaysToGerminate,
                 DaysToHarvest = plantDetails.DaysToHarvest,
                 SeedDepth = plantDetails.SeedDepth,

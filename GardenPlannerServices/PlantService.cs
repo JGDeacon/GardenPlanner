@@ -176,9 +176,9 @@ namespace GardenPlannerServices
             //return query.ToList();
         }
 
-        public IEnumerable<PlantDetailsModel> GetPerrenialPlants() // not working
+        public IEnumerable<PlantDetailsModel> GetPerrenialPlants(bool selection) //working
         {
-            var query = ctx.PlantDetails.Where(e => e.IsPerennial == true).ToArray().Select(f => BuildPlantDetailsModel(f));
+            var query = ctx.PlantDetails.Where(e => e.IsPerennial == selection).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
 

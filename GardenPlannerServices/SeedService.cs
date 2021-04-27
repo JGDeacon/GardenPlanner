@@ -1,5 +1,6 @@
 ﻿using GardenPlannerData;
 using GardenPlannerModels;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,7 +47,7 @@ namespace GardenPlannerServices
                 Temperature = "65 - 90 degrees F",
                 PlantDetailsDescription = "Dies really easy, don't touch it. - Not Accurate Info",
                 PlantCareDescription = "Water every 4 days, cover plant if there is a frost warning."
-            }) ;
+            });
             addPlantModels.Add(new AddPlantModel
             {
                 Name = "Clamatis",
@@ -127,7 +128,7 @@ namespace GardenPlannerServices
                 Temperature = "90 degrees + F",
                 PlantDetailsDescription = "Lives in the heat so it can heal your burns. - Not Accurate Info",
                 PlantCareDescription = "Don't break the leaves at the base."
-            }) ;            
+            });
             addPlantModels.Add(new AddPlantModel
             {
                 Name = "Potato",
@@ -154,6 +155,7 @@ namespace GardenPlannerServices
                 Temperature = "55 degrees + F",
                 PlantDetailsDescription = "Has eyes, but can't see. - Not Accurate Info",
                 PlantCareDescription = "Don't eat the eyes."
+
             }) ;
             addPlantModels.Add(new AddPlantModel
             {
@@ -294,6 +296,7 @@ namespace GardenPlannerServices
                 Temperature = "74 - 84 degrees F",
                 PlantDetailsDescription = "Pollinator plant. Attracts butterflies and hummingbirds. Very bright flowers.",
                 PlantCareDescription = "Water deeply a few times a week so soil stays 6-8 inches deep. Don't overwater or else the flowers will succumb to rot diseases (especially when using wet,clay soils)."
+
             });
 
             foreach (AddPlantModel item in addPlantModels)
@@ -373,10 +376,131 @@ namespace GardenPlannerServices
             sunExposures.Add(new SunExposures { SunExposureID = 4, Name = "Full Shade", Description = "Plants require less than 3 hours of direct sun per day", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             ctx.SunExposures.AddRange(sunExposures);
 
-            ctx.UserRoles.Add(new UserRoles { Name = "Admin", Description = "All powerful" });
-            ctx.UserRoles.Add(new UserRoles { Name = "Moderator", Description = "Can Update Some Tables" });
-            ctx.UserRoles.Add(new UserRoles { Name = "End User", Description = "Can Comment, Ask questions, add to MyPlants Table" });
+            List<UserRoles> userRoles = new List<UserRoles>();
+            userRoles.Add(new UserRoles { Name = "Admin", Description = "All powerful" });
+            userRoles.Add(new UserRoles { Name = "Moderator", Description = "Can Update Some Tables" });
+            userRoles.Add(new UserRoles { Name = "End User", Description = "Can Comment, Ask questions, add to MyPlants Table" });
+            ctx.UserRoles.AddRange(userRoles);
 
+            PasswordHasher ph = new PasswordHasher();
+            //PasswordHasher<ApplicationUser> passwordHasher2 = new PasswordHasher<ApplicationUser>();
+            List<ApplicationUser> applicationUsers = new List<ApplicationUser>();
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "Administrator",
+                Email = "admin@plantpeople.com",
+                PasswordHash = ph.HashPassword("Password1!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 1,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "Moderator",
+                Email = "Moderator@plantpeople.com",
+                PasswordHash = ph.HashPassword("Password1!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 2,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "End User",
+                Email = "Moderator@plantpeople.com",
+                PasswordHash = ph.HashPassword("Password1!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "gardenlover",
+                Email = "gardenlover@garden.com",
+                PasswordHash = ph.HashPassword("Test123!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "Beyonce",
+                Email = "QueenB@destinyschild.com",
+                PasswordHash = ph.HashPassword("Password1!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "Beyonce",
+                Email = "QueenB@destinyschild.com",
+                PasswordHash = ph.HashPassword("Password1!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "@TerryBrown",
+                Email = "FirstTimeInstructor@1150.org",
+                PasswordHash = ph.HashPassword("Test@1150"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "Shirisha",
+                Email = "Shirisha@gmail.com",
+                PasswordHash = ph.HashPassword("Password0!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            foreach (ApplicationUser user in applicationUsers)
+            {
+                ctx.Users.Add(user);
+            }
             ctx.SaveChanges();
         }
 

@@ -79,8 +79,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AddNotesToMyPlant.cs" />
+
     <Compile Include="GetModels\GetPlantBySeasonIDModel.cs" />
     <Compile Include="GetModels\GetPlantByZoneIDModel.cs" />
+
+    <Compile Include="AnswerModels\AddAnswerModel.cs" />
+    <Compile Include="AnswerModels\AnswerModel.cs" />
+    <Compile Include="CommentModels\AddCommentModel.cs" />
+    <Compile Include="CommentModels\CommentModel.cs" />
+    <Compile Include="CommentModels\GetCommentsModel.cs" />
+
     <Compile Include="GetModels\GetRootStructureModel.cs" />
     <Compile Include="GetModels\GetSunExposureModel.cs" />
     <Compile Include="GetModels\GetWaterNeedsModel.cs" />
@@ -92,6 +100,7 @@
     <Compile Include="AddMyPlantModel.cs" />
     <Compile Include="AddPlantCare.cs" />
     <Compile Include="GetMyPlantModel.cs" />
+    <Compile Include="LikesModel\AlterLikeModel.cs" />
     <Compile Include="PlantDetailsModel.cs" />
     <Compile Include="PlantDetailsModels\PlantCareModel.cs" />
     <Compile Include="PlantDetailsModels\PlantSeasonsModel.cs" />
@@ -101,7 +110,13 @@
     <Compile Include="PlantDetailsModels\WaterNeedsModel.cs" />
     <Compile Include="PlantDetailsModels\SunExposureModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+
     <Compile Include="GetSpecialDetailsModel.cs" />
+
+    <Compile Include="QuestionModels\AddQuestionModel.cs" />
+    <Compile Include="QuestionModels\GetQuestionAnswerModel.cs" />
+    <Compile Include="QuestionModels\GetQuestionsModel.cs" />
+
     <Compile Include="UpdateMyPlantModel.cs" />
     <Compile Include="UpdatePlantModel.cs" />
   </ItemGroup>
@@ -115,6 +130,7 @@
       <Name>GardenPlannerData</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

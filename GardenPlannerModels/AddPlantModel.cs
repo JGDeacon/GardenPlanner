@@ -38,6 +38,7 @@ namespace GardenPlannerModels
         public bool IsMedicinal { get; set; }
 
         public string Image { get; set; }
+        [Range(1,13,ErrorMessage = "Please enter number between 1 - 13")]
         public int ZoneID { get; set; }
         public int SeasonID { get; set; }
         public int PlantTypeID { get; set; }

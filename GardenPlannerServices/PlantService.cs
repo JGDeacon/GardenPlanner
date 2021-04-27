@@ -23,6 +23,10 @@ namespace GardenPlannerServices
 
         public bool AddPlant(AddPlantModel model)
         {
+            //if (ctx.Users.Single(e => e.Id.ToString() == _userID.ToString()).RoleID != 1 || ctx.Users.Single(e => e.Id.ToString() == _userID.ToString()).RoleID != 2) //Added to check role before adding plant.
+            //{
+            //    return false;
+            //}
             PlantCare plantCare = new PlantCare
             {
                 SunExposureID = model.SunExposureID,

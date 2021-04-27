@@ -74,14 +74,14 @@ namespace GardenPlannerServices
         }
         public bool UpdatePlant(int plantID, UpdatePlantModel model)
         {
-            PlantCare plantCare = ctx.PlantCare.Single(e => e.PlantCareID == model.PlantCareID);
-            {
+            PlantCare plantCare = ctx.PlantCare.FirstOrDefault(e => e.PlantCareID == model.PlantCareID);
+            //{
                 plantCare.SunExposureID = model.SunExposureID;
                 plantCare.WaterNeedID = model.WaterNeedID;
                 plantCare.Temperature = model.Temperature;
                 plantCare.Description = model.Description;
                 plantCare.ModifiedDate = DateTimeOffset.UtcNow;
-            }
+            //}
 
             Plants plants = ctx.Plants.Single(e => e.PlantID == plantID);
             plants.Name = model.Name;
@@ -191,9 +191,9 @@ namespace GardenPlannerServices
             var query = ctx.Plants.Where(e => e.ZoneID == zoneId && e.SeasonID == seasonID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
-        public IEnumerable<PlantDetailsModel> GetPlantByDaysToGerminate(int daysToGerminate) // Working but very specific. Should be a range
+        public IEnumerable<PlantDetailsModel> GetPlantByDaysToGerminate(int minDays, int maxDays) // Working but very specific. Should be a range
         {
-            List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => e.DaysToGerminate == daysToGerminate).ToList();
+            List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => e.DaysToGerminate >= minDays && e.DaysToGerminate <= maxDays).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
 
             foreach (PlantDetails item in plantDetails)
@@ -205,9 +205,14 @@ namespace GardenPlannerServices
         }
 
         //Need to check (Not sure) how it works 
-        public IEnumerable<PlantDetailsModel> GetPlantByDaysToMedicianlResistanceAndToxicity() //Not referenced
+        //public IEnumerable<PlantDetailsModel> GetPlantByDaysToMedicianlResistanceAndToxicity() //Not referenced
+        //{
+        //    var query = ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).ToArray().Select(f => BuildPlantDetailsModel(f));
+        //    return query.ToList();
+        //}
+        public IEnumerable<PlantDetailsModel> GetPlantByMedicianlResistanceAndToxicity(GetSpecialDetailsModel model) //Not referenced
         {
-            var query = ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).ToArray().Select(f => BuildPlantDetailsModel(f));
+            var query = ctx.PlantDetails.Where(e => (e.IsMedicinal == model.IsMedicinal) || (e.IsDeerResistant == model.IsDeerResistant) || (e.IsToxicToAnimal == model.IsToxicToAnimal) || (e.IsToxicToHuman == model.IsToxicToHuman)).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
         //PlantZone

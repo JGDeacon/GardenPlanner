@@ -156,6 +156,7 @@ namespace GardenPlannerServices
                 PlantDetailsDescription = "Has eyes, but can't see. - Not Accurate Info",
                 PlantCareDescription = "Don't eat the eyes."
 
+
             }) ;
             addPlantModels.Add(new AddPlantModel
             {
@@ -296,6 +297,7 @@ namespace GardenPlannerServices
                 Temperature = "74 - 84 degrees F",
                 PlantDetailsDescription = "Pollinator plant. Attracts butterflies and hummingbirds. Very bright flowers.",
                 PlantCareDescription = "Water deeply a few times a week so soil stays 6-8 inches deep. Don't overwater or else the flowers will succumb to rot diseases (especially when using wet,clay soils)."
+
 
             });
 

@@ -604,20 +604,7 @@ namespace GardenPlannerServices
                 PlantBloom = false,
                 PlantAdded = false
             });
-            applicationUsers.Add(new ApplicationUser
-            {
-                UserName = "Beyonce",
-                Email = "QueenB@destinyschild.com",
-                PasswordHash = ph.HashPassword("Password1!"),
-                SecurityStamp = Guid.NewGuid().ToString(),
-                RoleID = 3,
-                CreatedDate = DateTimeOffset.UtcNow,
-                Answer = false,
-                WhenToWater = false,
-                WhenToPlant = false,
-                PlantBloom = false,
-                PlantAdded = false
-            });
+           
             applicationUsers.Add(new ApplicationUser
             {
                 UserName = "@TerryBrown",

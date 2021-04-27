@@ -7,13 +7,13 @@ namespace GardenPlannerData.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Initial2 : IMigrationMetadata
+    public sealed partial class SocialChanges : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(SocialChanges));
         
         string IMigrationMetadata.Id
         {
-            get { return "202104261325360_Initial2"; }
+            get { return "202104261950418_SocialChanges"; }
         }
         
         string IMigrationMetadata.Source

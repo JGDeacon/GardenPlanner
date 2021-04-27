@@ -147,9 +147,9 @@
     <Compile Include="Migrations\202104212106047_All.Designer.cs">
       <DependentUpon>202104212106047_All.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202104261325360_Initial2.cs" />
-    <Compile Include="Migrations\202104261325360_Initial2.designer.cs">
-      <DependentUpon>202104261325360_Initial2.cs</DependentUpon>
+    <Compile Include="Migrations\202104261950418_SocialChanges.cs" />
+    <Compile Include="Migrations\202104261950418_SocialChanges.designer.cs">
+      <DependentUpon>202104261950418_SocialChanges.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MyPlants.cs" />
@@ -174,8 +174,8 @@
     <EmbeddedResource Include="Migrations\202104212106047_All.resx">
       <DependentUpon>202104212106047_All.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202104261325360_Initial2.resx">
-      <DependentUpon>202104261325360_Initial2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202104261950418_SocialChanges.resx">
+      <DependentUpon>202104261950418_SocialChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

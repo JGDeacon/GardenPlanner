@@ -155,6 +155,148 @@ namespace GardenPlannerServices
                 Temperature = "55 degrees + F",
                 PlantDetailsDescription = "Has eyes, but can't see. - Not Accurate Info",
                 PlantCareDescription = "Don't eat the eyes."
+
+            }) ;
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Peruvian Lilly",
+                ScientificName = "Alstoemeria",
+                DaysToGerminate = 28,
+                DaysToHarvest = 105,
+                SeedDepth = 8.0,
+                IsPerennial = true,
+                PlantHeightMax = 36,
+                PlantWidthMax = 24,
+                SeedSpacing = 18,
+                RowSpacing = 15.8,
+                IsDeerResistant = true,
+                IsToxicToAnimal = true,
+                IsToxicToHuman = true,
+                IsMedicinal = false,
+                Image = "https://unsplash.com/photos/6PX8C0Pwx8A",
+                ZoneID = 8,
+                SeasonID = 3,
+                PlantTypeID = 3,
+                SunExposureID = 2,
+                WaterNeedID = 3,
+                RootStructureID = 1,
+                Temperature = "63 - 72 degrees F",
+                PlantDetailsDescription = "perennial native to South America. Terminal clusters of small, lily-like flowers top slender, upright stems growing in bushy clumps to 2-3' tall. Flowers in yellow or orange, often with spotting and streaking. Blooms in summer.",
+                PlantCareDescription = "Once in bloom, fertilize weekly. Pull stems intead of cut. Use mulch to keep plant warm in colder weather. "
+            });
+
+
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Mint",
+                ScientificName = "Mentha",
+                DaysToGerminate = 15,
+                DaysToHarvest = 90,
+                SeedDepth = .25,
+                IsPerennial = true,
+                PlantHeightMax = 24,
+                PlantWidthMax = 24,
+                SeedSpacing = 18,
+                RowSpacing = 18,
+                IsDeerResistant = false,
+                IsToxicToAnimal = false,
+                IsToxicToHuman = false,
+                IsMedicinal = true,
+                Image = "https://unsplash.com/photos/boadZKqd1YM",
+                ZoneID = 6,
+                SeasonID = 3,
+                PlantTypeID = 3,
+                SunExposureID = 2,
+                WaterNeedID = 1,
+                RootStructureID = 3,
+                Temperature = "65 - 90 degrees F",
+                PlantDetailsDescription = "Spreads easily. Strong scented.",
+                PlantCareDescription = "Water frequently. Plant in contained space, easily overtakes neighboring plants. Great for dishes, drinks, and medicinal purposes."
+            });
+
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Morning Glory",
+                ScientificName = "Ipomoea",
+                DaysToGerminate = 21,
+                DaysToHarvest = 32,
+                SeedDepth = 0.5,
+                IsPerennial = true,
+                PlantHeightMax = 144,
+                PlantWidthMax = 72,
+                SeedSpacing = 6,
+                RowSpacing = 6,
+                IsDeerResistant = false,
+                IsToxicToAnimal = false,
+                IsToxicToHuman = false,
+                IsMedicinal = true,
+                Image = "https://unsplash.com/photos/CY8d-s7ACrA",
+                ZoneID = 6,
+                SeasonID = 3,
+                PlantTypeID = 6,
+                SunExposureID = 2,
+                WaterNeedID = 2,
+                RootStructureID = 7,
+                Temperature = "64 degrees F",
+                PlantDetailsDescription = "Vines grow by clinging to nearby structures. Grows rapidly. Best grown contained.",
+                PlantCareDescription = "Water every 4 days, cover plant if there is a frost warning."
+            });
+
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Parsley",
+                ScientificName = "Petroselinum crispum",
+                DaysToGerminate = 30,
+                DaysToHarvest = 80,
+                SeedDepth = 1,
+                IsPerennial = false,
+                PlantHeightMax = 18,
+                PlantWidthMax = 30,
+                SeedSpacing = 6,
+                RowSpacing = 11.4,
+                IsDeerResistant = false,
+                IsToxicToAnimal = false,
+                IsToxicToHuman = false,
+                IsMedicinal = true,
+                Image = "https://unsplash.com/photos/WGZv8R05LSo",
+                ZoneID = 9,
+                SeasonID = 4,
+                PlantTypeID = 4,
+                SunExposureID = 2,
+                WaterNeedID = 2,
+                RootStructureID = 2,
+                Temperature = "65 - 90 degrees F",
+                PlantDetailsDescription = "Used to treat high blood pressure, allergies, and inflammatory diseases. Native to the Mediterranean.",
+                PlantCareDescription = "Keep soil lightly moist. Fertilize every two weeks. Grows well in containers."
+            });
+
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Zinnia",
+                ScientificName = "Zinnia elegans",
+                DaysToGerminate = 5,
+                DaysToHarvest = 70,
+                SeedDepth = .25,
+                IsPerennial = false,
+                PlantHeightMax = 18,
+                PlantWidthMax = 30,
+                SeedSpacing = 18,
+                RowSpacing = 18,
+                IsDeerResistant = false,
+                IsToxicToAnimal = false,
+                IsToxicToHuman = false,
+                IsMedicinal = true,
+                Image = "https://unsplash.com/photos/P16UKYi8rAA",
+                ZoneID = 7,
+                SeasonID = 2,
+                PlantTypeID = 1,
+                SunExposureID = 1,
+                WaterNeedID = 2,
+                RootStructureID = 2,
+                Temperature = "74 - 84 degrees F",
+                PlantDetailsDescription = "Pollinator plant. Attracts butterflies and hummingbirds. Very bright flowers.",
+                PlantCareDescription = "Water deeply a few times a week so soil stays 6-8 inches deep. Don't overwater or else the flowers will succumb to rot diseases (especially when using wet,clay soils)."
+
             });
 
             foreach (AddPlantModel item in addPlantModels)

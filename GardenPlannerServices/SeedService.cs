@@ -156,6 +156,7 @@ namespace GardenPlannerServices
                 PlantDetailsDescription = "Has eyes, but can't see. - Not Accurate Info",
                 PlantCareDescription = "Don't eat the eyes."
 
+
             }) ;
             addPlantModels.Add(new AddPlantModel
             {
@@ -296,6 +297,154 @@ namespace GardenPlannerServices
                 Temperature = "74 - 84 degrees F",
                 PlantDetailsDescription = "Pollinator plant. Attracts butterflies and hummingbirds. Very bright flowers.",
                 PlantCareDescription = "Water deeply a few times a week so soil stays 6-8 inches deep. Don't overwater or else the flowers will succumb to rot diseases (especially when using wet,clay soils)."
+
+
+            });
+
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Damask Rose ",
+                ScientificName = "Rosa damascena",
+                DaysToGerminate = 14,
+                DaysToHarvest = 95,
+                SeedDepth = 2,
+                IsPerennial = true,
+                PlantHeightMax = 4,
+                PlantWidthMax = 3,
+                SeedSpacing = 36,
+                RowSpacing = 42,
+                IsDeerResistant = false,
+                IsToxicToAnimal = false,
+                IsToxicToHuman = true,
+                IsMedicinal = false,
+                Image = "https://images.unsplash.com/photo-1607542661840-179d473a913d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=358&q=80",
+                ZoneID = 8,
+                SeasonID = 3,
+                PlantTypeID = 3,
+                SunExposureID = 2,
+                WaterNeedID = 2,
+                RootStructureID = 1,
+                Temperature = "70 degrees + F",
+                PlantDetailsDescription = "Roses are erect, climbing, or trailing shrubs, \n " +
+                "the stems of which are usually copiously armed with prickles of various shapes and sizes,commonly called thorns.",
+                PlantCareDescription = "Rose care is easier than you think—anyone can grow them successfully.Plant your roses in a sunny location with good drainage.Fertilize them regularly for impressive flowers. Water them evenly to keep the soil moist."
+            });
+
+
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Hibiscus",
+                ScientificName = "Hibiscus rosa-sinensis",
+                DaysToGerminate = 21,
+                DaysToHarvest = 85,
+                SeedDepth = 2,
+                IsPerennial = true,
+                PlantHeightMax = 8,
+                PlantWidthMax = 5,
+                SeedSpacing = 48,
+                RowSpacing = 60,
+                IsDeerResistant = false,
+                IsToxicToAnimal = false,
+                IsToxicToHuman = true,
+                IsMedicinal = false,
+                Image = "https://images.unsplash.com/photo-1599596852967-98d70b0ee789?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=375&q=80",
+                ZoneID = 8,
+                SeasonID = 3,
+                PlantTypeID = 3,
+                SunExposureID = 2,
+                WaterNeedID = 2,
+                RootStructureID = 1,
+                Temperature = "70 degrees + F",
+                PlantDetailsDescription = "Hibiscus, (genus Hibiscus), genus of numerous species of herbs, shrubs, and trees in the mallow family (Malvaceae) that are native to warm temperate and tropical regions.",
+                PlantCareDescription = "When hibiscus are in their blooming stage, they require large amounts of water. \n" +
+                "Your hibiscus will need daily watering in warm weather.But once the weather cools,your hibiscus needs far less water and too much water can kill it.In the winter,water your hibiscus only when the soil is dry to the touch."
+            });
+
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Tomato",
+                ScientificName = "Solanum lycopersicum",
+                DaysToGerminate = 21,
+                DaysToHarvest = 90,
+                SeedDepth = 1,
+                IsPerennial = false,
+                PlantHeightMax = 4,
+                PlantWidthMax = 3,
+                SeedSpacing = 18,
+                RowSpacing = 24,
+                IsDeerResistant = false,
+                IsToxicToAnimal = false,
+                IsToxicToHuman = true,
+                IsMedicinal = false,
+                Image = "https://images.unsplash.com/photo-1565698228480-eec300c9679b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=350&q=80",
+                ZoneID = 8,
+                SeasonID = 3,
+                PlantTypeID = 17,
+                SunExposureID = 2,
+                WaterNeedID = 2,
+                RootStructureID = 1,
+                Temperature = "75 degrees + F",
+                PlantDetailsDescription = "Tomato, flowering plant of the nightshade family, cultivated extensively for its edible fruits. The fruits are commonly eaten raw, served as a cooked vegetable",
+                PlantCareDescription = "Water in the early morning so that plants have sufficient moisture to make it through a hot day.Water generously the first few days that the tomato seedlings or transplants are in the ground." 
+               
+            });
+
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Jalapeno ",
+                ScientificName = "Capsicum annuum 'Jalapeño",
+                DaysToGerminate = 21,
+                DaysToHarvest = 90,
+                SeedDepth = 1,
+                IsPerennial = false,
+                PlantHeightMax = 3,
+                PlantWidthMax = 2,
+                SeedSpacing = 12,
+                RowSpacing = 16,
+                IsDeerResistant = false,
+                IsToxicToAnimal = false,
+                IsToxicToHuman = true,
+                IsMedicinal = false,
+                Image = "https://images.unsplash.com/photo-1587742497245-52afcc1df553?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=747&q=80",
+                ZoneID = 8,
+                SeasonID = 3,
+                PlantTypeID = 17,
+                SunExposureID = 2,
+                WaterNeedID = 1,
+                RootStructureID = 1,
+                Temperature = "70 degrees + F",
+                PlantDetailsDescription = "The jalapeño pepper is a medium-sized chili pepper. Mature jalapeños are 2 to 3 inches in length and are typically picked and consumed while still green.Occasionally, they are allowed to fully ripen and turn red in color.",
+                PlantCareDescription = "Keep the soil constantly moist, but not soaking wet. Jalapeno peppers love water, but you don't want to inundate the plants, or you run the risk of rotting. Water every other day or every third day.Include a good plant food product for fertilizing." 
+
+
+            });
+
+            addPlantModels.Add(new AddPlantModel
+            {
+                Name = "Bell Pepper ",
+                ScientificName = "Capsicum annuum",
+                DaysToGerminate = 21,
+                DaysToHarvest = 90,
+                SeedDepth = 1,
+                IsPerennial = false,
+                PlantHeightMax = 3,
+                PlantWidthMax = 2,
+                SeedSpacing = 18,
+                RowSpacing = 24,
+                IsDeerResistant = false,
+                IsToxicToAnimal = false,
+                IsToxicToHuman = true,
+                IsMedicinal = false,
+                Image = "https://images.unsplash.com/photo-1563576803227-0d085f32f5b2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80",
+                ZoneID = 8,
+                SeasonID = 3,
+                PlantTypeID = 17,
+                SunExposureID = 2,
+                WaterNeedID = 1,
+                RootStructureID = 1,
+                Temperature = "75 degrees + F",
+                PlantDetailsDescription = "Bell pepper,, also called sweet pepper or capsicum, pepper cultivar in the nightshade family(Solanaceae),grown for its thick, mild fruits.",
+                PlantCareDescription = "Water carefully. Bell peppers need a deep watering, about one to two inches per week.Provide sun,Use the right fertilizer."
 
             });
 

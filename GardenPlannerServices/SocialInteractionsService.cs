@@ -97,8 +97,8 @@ namespace GardenPlannerServices
                 {
                     Title = g.Title,
                     Comment = g.Comment,
-                    Username = ctx.Users.FirstOrDefault(e => e.Id.ToString() == _userID.ToString()).UserName,
-                    CreatedDate = DateTimeOffset.UtcNow
+                    Username = ctx.Users.FirstOrDefault(e => e.Id.ToString() == g.UserID.ToString()).UserName,
+                    CreatedDate = g.CreatedDate
                 }).ToList(),
                 Likes = ctx.Likes.Where(e => e.PlantID == plants.PlantID).Select(g => g.IsLiked == true).Count()
             };
@@ -127,7 +127,7 @@ namespace GardenPlannerServices
             });
             return query.ToList();
         }
-        public GetQuestionAnswerModel GetQuestionAnswers(int questionID) //Not working... looping data
+        public GetQuestionAnswerModel GetQuestionAnswers(int questionID) //Working and showing the correct username
         {
             Questions questions = ctx.Questions.Single(e => e.QuestionID == questionID);
             GetQuestionAnswerModel getQuestionAnswerModel = new GetQuestionAnswerModel
@@ -138,7 +138,7 @@ namespace GardenPlannerServices
                 {
                     Answer = g.Answer,
                     CreatedDate = g.CreatedDate,
-                    Username = ctx.Users.FirstOrDefault(e => e.Id.ToString() == _userID.ToString()).UserName
+                    Username = ctx.Users.FirstOrDefault(e => e.Id.ToString() == g.UserID.ToString()).UserName
                 }).ToList(),
             };
             return getQuestionAnswerModel;

@@ -116,7 +116,7 @@ namespace GardenPlannerData.Migrations
                         SeedDepth = c.Double(nullable: false),
                         IsPerennial = c.Boolean(nullable: false),
                         PlantHeightMax = c.Double(nullable: false),
-                        PlantWidthtMax = c.Double(nullable: false),
+                        PlantWidthMax = c.Double(nullable: false),
                         SeedSpacing = c.Double(nullable: false),
                         RowSpacing = c.Double(nullable: false),
                         RootStructureID = c.Int(nullable: false),

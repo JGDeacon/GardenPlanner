@@ -49,7 +49,7 @@ namespace GardenPlannerAPI.Controllers
 
         }
 
-        public IHttpActionResult Put(UpdateMyPlantModel plant) // not working
+        public IHttpActionResult Put(UpdateMyPlantModel plant) 
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

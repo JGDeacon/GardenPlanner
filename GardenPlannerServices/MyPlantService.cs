@@ -54,7 +54,7 @@ namespace GardenPlannerServices
             return ctx.SaveChanges() == 1;
         }
 
-        //Add notes allow to add a notes to plant on myplant list. It takes MyPlantID , Adds note to plant that matches with my palnt ID.
+        //AddNote allows user to add a note to a plant on MyPlant list. It takes MyPlantID and adds note to plant that matches with MyPlantID.
         public bool AddNote(AddNotesToMyPlant model)
         {
             MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == model.MyPlantID);
@@ -66,7 +66,7 @@ namespace GardenPlannerServices
             return ctx.SaveChanges() == 1;
         }
 
-        //DeleteMyPlant method takes in the myPlantID and delete the plant matches with that ID, from my plant list. 
+        //DeleteMyPlant method takes in the myPlantID and deletes the plant that matches with that ID from MyPlant list. 
         public bool DeleteMyPlant(int myPlantID)
         {
             MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == myPlantID);
@@ -78,8 +78,8 @@ namespace GardenPlannerServices
             return ctx.SaveChanges() == 1;
         }
 
-        //UpdateMyPlant method takes in myPlantID of the palnt you would like to update and new infomation that need to be updated.
-        //Populates the new updated information using UpdateMyplantMethod
+        //UpdateMyPlant method takes in myPlantID of the plant you would like to update and new infomation that needs to be updated.
+        //Populates the new updated information using UpdateMyPlantModel
         public bool UpdateMyPlant(UpdateMyPlantModel model)
         {
             MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == model.MyPlantID);

@@ -13,13 +13,14 @@ using System.Web.Http;
 
 namespace GardenPlannerAPI.Controllers
 {
+    [Authorize]
     public class SocialInteractionsController : ApiController
     {
         private SocialInteractionsService CreateSocialInteractionsService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var plantService = new SocialInteractionsService(userID);
-            return plantService;
+            var mySocialInteractionsService = new SocialInteractionsService(userID);
+            return mySocialInteractionsService;
         }
         [Route("api/AddComment")]
         public IHttpActionResult AddComment(AddCommentModel model)

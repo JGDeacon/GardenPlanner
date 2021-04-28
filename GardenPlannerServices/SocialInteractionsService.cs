@@ -37,7 +37,7 @@ namespace GardenPlannerServices
         }
         public bool AlterLikePlant(AlterLikeModel model)
         {
-            if (ctx.Likes.Where(e => e.PlantID == model.PlantID && e.UserID == _userID).Count() < 1) //We need to add the record to the Likes table
+            if (ctx.Likes.Where(e => e.PlantID == model.PlantID && e.UserID == _userID).Count() < 1) 
             {
                 Likes likes = new Likes
                 {
@@ -50,7 +50,7 @@ namespace GardenPlannerServices
             }
             else
             {
-                bool isLiked = ctx.Likes.Single(e => e.PlantID == model.PlantID && e.UserID == _userID).IsLiked; // need to check for nulls
+                bool isLiked = ctx.Likes.Single(e => e.PlantID == model.PlantID && e.UserID == _userID).IsLiked;
                 if (isLiked)
                 {
                     ctx.Likes.Single(e => e.PlantID == model.PlantID && e.UserID == _userID).IsLiked = false;
@@ -129,7 +129,7 @@ namespace GardenPlannerServices
             });
             return query.ToList();
         }
-        public GetQuestionAnswerModel GetQuestionAnswers(int questionID) //Working and showing the correct username
+        public GetQuestionAnswerModel GetQuestionAnswers(int questionID) 
         {
             Questions questions = ctx.Questions.Single(e => e.QuestionID == questionID);
             GetQuestionAnswerModel getQuestionAnswerModel = new GetQuestionAnswerModel

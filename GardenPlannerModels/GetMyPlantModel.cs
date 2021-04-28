@@ -10,7 +10,7 @@ namespace GardenPlannerModels
     {
         public int MyPlantID { get; set; }
         public string Location { get; set; }
-        public string PlantName { get; set; } // not needed...?
+        public string PlantName { get; set; } 
         public int PlantID { get; set; }
         public DateTimeOffset DatePlanted { get; set; }
         public string Notes { get; set; }

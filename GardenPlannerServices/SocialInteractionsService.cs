@@ -9,8 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace GardenPlannerServices
 {
+    
     public class SocialInteractionsService
     {
         private readonly ApplicationDbContext ctx = new ApplicationDbContext();

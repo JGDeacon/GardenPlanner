@@ -127,7 +127,7 @@ namespace GardenPlannerServices
             });
             return query.ToList();
         }
-        public GetQuestionAnswerModel GetQuestionAnswers(int questionID) //Working and showing the correct username
+        public GetQuestionAnswerModel GetQuestionAnswers(int questionID) 
         {
             Questions questions = ctx.Questions.Single(e => e.QuestionID == questionID);
             GetQuestionAnswerModel getQuestionAnswerModel = new GetQuestionAnswerModel

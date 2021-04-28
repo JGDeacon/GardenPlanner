@@ -23,10 +23,7 @@ namespace GardenPlannerServices
 
         public bool AddPlant(AddPlantModel model)
         {
-            //if (ctx.Users.Single(e => e.Id.ToString() == _userID.ToString()).RoleID != 1 || ctx.Users.Single(e => e.Id.ToString() == _userID.ToString()).RoleID != 2) //Added to check role before adding plant.
-            //{
-            //    return false;
-            //}
+          
             PlantCare plantCare = new PlantCare
             {
                 SunExposureID = model.SunExposureID,
@@ -75,13 +72,13 @@ namespace GardenPlannerServices
         public bool UpdatePlant(int plantID, UpdatePlantModel model)
         {
             PlantCare plantCare = ctx.PlantCare.FirstOrDefault(e => e.PlantCareID == model.PlantCareID);
-            //{
+            
                 plantCare.SunExposureID = model.SunExposureID;
                 plantCare.WaterNeedID = model.WaterNeedID;
                 plantCare.Temperature = model.Temperature;
                 plantCare.Description = model.Description;
                 plantCare.ModifiedDate = DateTimeOffset.UtcNow;
-            //}
+            
 
             Plants plants = ctx.Plants.Single(e => e.PlantID == plantID);
             plants.Name = model.Name;
@@ -105,7 +102,7 @@ namespace GardenPlannerServices
             var query = ctx.Plants.Where(e => e.PlantTypeID == plantTypeID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
-        public IEnumerable<PlantDetailsModel> GetPlantsByWidth(double min, double max) //working
+        public IEnumerable<PlantDetailsModel> GetPlantsByWidth(double min, double max) 
         {
             List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => (e.PlantWidthMax >= min) && (max >= e.PlantWidthMax)).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -114,13 +111,12 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantDetailsID == item.PlantDetailsID)));
             }
-            //var query = ctx.PlantDetails.Where(e => e.DaysToGerminate == daysToGerminate).ToArray().Select(f => BuildPlantDetailsModel(f));
+            
             return plantDetailsModel.ToList();
-            //var query = ctx.PlantDetails.Where(e => (e.PlantWidthMax >= min) && (max >= e.PlantWidthMax)).ToArray().Select(f => BuildPlantDetailsModel(f));
-            //return query.ToList();
+            
         }
 
-        public IEnumerable<PlantDetailsModel> GetPlantsBySunExposure(int sunExposureID) //working
+        public IEnumerable<PlantDetailsModel> GetPlantsBySunExposure(int sunExposureID) 
         {
             List<PlantCare> plantCareID = ctx.PlantCare.Where(e => e.SunExposureID == sunExposureID).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -129,11 +125,11 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantCareID == item.PlantCareID)));
             }
-            //var query = ctx.Plants.Where(e => e.PlantCareID == ctx.PlantCare.FirstOrDefault(g => g.SunExposureID == sunExposureID).PlantCareID).ToArray().Select(f => BuildPlantDetailsModel(f));
+            
             
             return plantDetailsModel.ToList();
         }
-        public IEnumerable<PlantDetailsModel> GetPlantsByWaterNeed(int waterNeedID) //working
+        public IEnumerable<PlantDetailsModel> GetPlantsByWaterNeed(int waterNeedID) 
         {
             List<PlantCare> plantCareID = ctx.PlantCare.Where(e => e.WaterNeedID == waterNeedID).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -142,15 +138,13 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantCareID == item.PlantCareID)));
             }
-            //var query = ctx.Plants.Where(e => e.PlantCareID == plantCareID.PlantCareID).ToArray().Select(f => BuildPlantDetailsModel(f));
-            //var query = ctx.PlantCare.Where(e => e.PlantCareID == (ctx.PlantCare.Find(waterNeedID).PlantCareID)).Where(g => g.s => .ToArray().Select(f => BuildPlantDetailsModel(f));
-            //var query = ctx.PlantCare.Where(e => e.WaterNeedID == waterNeedID).Where(r => r.PlantCareID == ctx.Plants.(ctx.PlantCare.Where(g => g.WaterNeedID == waterNeedID)).ToArray().Select(f => BuildPlantDetailsModel(f));
+           
             return plantDetailsModel.ToList();
         }
 
 
 
-        public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID) //working
+        public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID) 
         {
             var query = ctx.Plants.Where(e => e.ZoneID == zoneID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
@@ -158,13 +152,13 @@ namespace GardenPlannerServices
 
 
 
-        public IEnumerable<PlantDetailsModel> GetPlantsByBloomSeason(int seasonID) //working
+        public IEnumerable<PlantDetailsModel> GetPlantsByBloomSeason(int seasonID) 
         {
             var query = ctx.Plants.Where(e => e.SeasonID == seasonID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
 
-        public IEnumerable<PlantDetailsModel> GetPlantsByHeightMax(double plantHeightMax) // working... but too specific. This should be a range
+        public IEnumerable<PlantDetailsModel> GetPlantsByHeightMax(double plantHeightMax) 
         {
             List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => e.PlantHeightMax == plantHeightMax).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -174,24 +168,23 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantDetailsID == item.PlantDetailsID)));
             }
-            //var query = ctx.PlantDetails.Where(e => e.DaysToGerminate == daysToGerminate).ToArray().Select(f => BuildPlantDetailsModel(f));
+            
             return plantDetailsModel.ToList();
-            //var query = ctx.PlantDetails.Where(e => e.PlantHeightMax == plantHeightMax).ToArray().Select(f => BuildPlantDetailsModel(f));
-            //return query.ToList();
+            
         }
 
-        public IEnumerable<PlantDetailsModel> GetPerrenialPlants(bool selection) //working
+        public IEnumerable<PlantDetailsModel> GetPerrenialPlants(bool selection) 
         {
             var query = ctx.PlantDetails.Where(e => e.IsPerennial == selection).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
 
-        public IEnumerable<PlantDetailsModel> GetPlantByZoneAndSeason(int zoneId, int seasonID) //working
+        public IEnumerable<PlantDetailsModel> GetPlantByZoneAndSeason(int zoneId, int seasonID) 
         {
             var query = ctx.Plants.Where(e => e.ZoneID == zoneId && e.SeasonID == seasonID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
-        public IEnumerable<PlantDetailsModel> GetPlantByDaysToGerminate(int minDays, int maxDays) // Working but very specific. Should be a range
+        public IEnumerable<PlantDetailsModel> GetPlantByDaysToGerminate(int minDays, int maxDays) 
         {
             List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => e.DaysToGerminate >= minDays && e.DaysToGerminate <= maxDays).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -200,16 +193,11 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantDetailsID == item.PlantDetailsID)));
             }
-            //var query = ctx.PlantDetails.Where(e => e.DaysToGerminate == daysToGerminate).ToArray().Select(f => BuildPlantDetailsModel(f));
+           
             return plantDetailsModel.ToList();
         }
 
-        //Need to check (Not sure) how it works 
-        //public IEnumerable<PlantDetailsModel> GetPlantByDaysToMedicianlResistanceAndToxicity() //Not referenced
-        //{
-        //    var query = ctx.PlantDetails.Where(e => e.IsMedicinal || e.IsDeerResistant || e.IsToxicToAnimal || e.IsToxicToHuman == true).ToArray().Select(f => BuildPlantDetailsModel(f));
-        //    return query.ToList();
-        //}
+       
         public IEnumerable<PlantDetailsModel> GetPlantByMedicianlResistanceAndToxicity(GetSpecialDetailsModel model) //Not referenced
         {
             var query = ctx.PlantDetails.Where(e => (e.IsMedicinal == model.IsMedicinal) || (e.IsDeerResistant == model.IsDeerResistant) || (e.IsToxicToAnimal == model.IsToxicToAnimal) || (e.IsToxicToHuman == model.IsToxicToHuman)).ToArray().Select(f => BuildPlantDetailsModel(f));
@@ -409,14 +397,9 @@ namespace GardenPlannerServices
                 },
                 RootStructure = new RootStructureModel
                 {
-                    //Name = ctx.RootStructure.FirstOrDefault(r => r.RootStructureID == plantDetails.RootStructureID).Name, //First adjustment
-                    //Description = ctx.RootStructure.FirstOrDefault(r => r.RootStructureID == plantDetails.RootStructureID).Description //First adjustment
-                    
-                    Name = "Name",
-                    Description = "Desc"
-                    
-                    //Name = ctx.RootStructure.FirstOrDefault(r => r.RootStructureID == ctx.PlantDetails.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Name,
-                    //Description = ctx.RootStructure.FirstOrDefault(r => r.RootStructureID == ctx.PlantDetails.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Description
+
+                    Name = ctx.RootStructure.FirstOrDefault(r => r.RootStructureID == ctx.PlantDetails.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Name,
+                    Description = ctx.RootStructure.FirstOrDefault(r => r.RootStructureID == ctx.PlantDetails.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Description
                 }
             };
             return plantDetailsModel;

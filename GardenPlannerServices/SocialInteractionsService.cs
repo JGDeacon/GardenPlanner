@@ -9,8 +9,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace GardenPlannerServices
 {
+    
     public class SocialInteractionsService
     {
         private readonly ApplicationDbContext ctx = new ApplicationDbContext();
@@ -35,7 +37,7 @@ namespace GardenPlannerServices
         }
         public bool AlterLikePlant(AlterLikeModel model)
         {
-            if (ctx.Likes.Where(e => e.PlantID == model.PlantID && e.UserID == _userID).Count() < 1) //We need to add the record to the Likes table
+            if (ctx.Likes.Where(e => e.PlantID == model.PlantID && e.UserID == _userID).Count() < 1) 
             {
                 Likes likes = new Likes
                 {
@@ -48,7 +50,7 @@ namespace GardenPlannerServices
             }
             else
             {
-                bool isLiked = ctx.Likes.Single(e => e.PlantID == model.PlantID && e.UserID == _userID).IsLiked; // need to check for nulls
+                bool isLiked = ctx.Likes.Single(e => e.PlantID == model.PlantID && e.UserID == _userID).IsLiked;
                 if (isLiked)
                 {
                     ctx.Likes.Single(e => e.PlantID == model.PlantID && e.UserID == _userID).IsLiked = false;

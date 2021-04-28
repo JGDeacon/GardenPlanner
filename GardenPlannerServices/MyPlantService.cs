@@ -51,18 +51,30 @@ namespace GardenPlannerServices
         public bool AddNote(AddNotesToMyPlant model)
         {
             MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == model.MyPlantID);
+            if (myPlants.UserID != _userID)
+            {
+                return false;
+            }
             myPlants.Notes = model.Notes;
             return ctx.SaveChanges() == 1;
         }
         public bool DeleteMyPlant(int myPlantID)
         {
             MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == myPlantID);
+            if (myPlants.UserID != _userID)
+            {
+                return false;
+            }
             ctx.MyPlants.Remove(myPlants);
             return ctx.SaveChanges() == 1;
         }
         public bool UpdateMyPlant(UpdateMyPlantModel model)
         {
             MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == model.MyPlantID);
+            if (myPlants.UserID != _userID)
+            {
+                return false;
+            }
             myPlants.Location = model.Location;
             myPlants.PlantID = model.MyPlantID;
             myPlants.DatePlanted = model.DatePlanted;

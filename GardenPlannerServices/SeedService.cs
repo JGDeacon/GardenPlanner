@@ -532,8 +532,7 @@ namespace GardenPlannerServices
             userRoles.Add(new UserRoles { Name = "End User", Description = "Can Comment, Ask questions, add to MyPlants Table" });
             ctx.UserRoles.AddRange(userRoles);
 
-            PasswordHasher ph = new PasswordHasher();
-            //PasswordHasher<ApplicationUser> passwordHasher2 = new PasswordHasher<ApplicationUser>();
+            PasswordHasher ph = new PasswordHasher();            
             List<ApplicationUser> applicationUsers = new List<ApplicationUser>();
             applicationUsers.Add(new ApplicationUser
             {

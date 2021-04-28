@@ -15,6 +15,10 @@ namespace GardenPlannerData.Migrations
 
         protected override void Seed(GardenPlannerData.ApplicationDbContext context)
         {
+
+            
+            
+
         }
     }
 }

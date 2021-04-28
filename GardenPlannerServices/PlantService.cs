@@ -23,6 +23,7 @@ namespace GardenPlannerServices
         //AddPlant builds a new plant based off AddPlantModel. The information is set to the properties in PlantCare and PlantDetails.
         public bool AddPlant(AddPlantModel model)
         {
+
             PlantCare plantCare = new PlantCare
             {
                 SunExposureID = model.SunExposureID,
@@ -73,11 +74,15 @@ namespace GardenPlannerServices
         public bool UpdatePlant(int plantID, UpdatePlantModel model)
         {
             PlantCare plantCare = ctx.PlantCare.FirstOrDefault(e => e.PlantCareID == model.PlantCareID);
-            plantCare.SunExposureID = model.SunExposureID;
-            plantCare.WaterNeedID = model.WaterNeedID;
-            plantCare.Temperature = model.Temperature;
-            plantCare.Description = model.Description;
-            plantCare.ModifiedDate = DateTimeOffset.UtcNow;
+
+            
+                plantCare.SunExposureID = model.SunExposureID;
+                plantCare.WaterNeedID = model.WaterNeedID;
+                plantCare.Temperature = model.Temperature;
+                plantCare.Description = model.Description;
+                plantCare.ModifiedDate = DateTimeOffset.UtcNow;
+            
+
 
             Plants plants = ctx.Plants.Single(e => e.PlantID == plantID);
             plants.Name = model.Name;
@@ -104,10 +109,14 @@ namespace GardenPlannerServices
             var query = ctx.Plants.Where(e => e.PlantTypeID == plantTypeID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
+
+        public IEnumerable<PlantDetailsModel> GetPlantsByWidth(double min, double max) 
+
         //GetPlantsByWidth will return a list of plants within the desired range of PlantWidthMax. The values are in inches. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class.  The definitions for each value are available 
         // in Configuration.cs.
         public IEnumerable<PlantDetailsModel> GetPlantsByWidth(double min, double max)
+
         {
             List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => (e.PlantWidthMax >= min) && (max >= e.PlantWidthMax)).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -116,12 +125,18 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantDetailsID == item.PlantDetailsID)));
             }
+
+            
             return plantDetailsModel.ToList();
+            
         }
+
+       
         //GetPlantsBySunExposure will return of plants that have the desired sunExposureID. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class. The value must be within the available range of 1-4. The definitions for each value are available 
         // in Configuration.cs 
         public IEnumerable<PlantDetailsModel> GetPlantsBySunExposure(int sunExposureID)
+
         {
             List<PlantCare> plantCareID = ctx.PlantCare.Where(e => e.SunExposureID == sunExposureID).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -130,14 +145,19 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantCareID == item.PlantCareID)));
             }
+
+            
+            
             return plantDetailsModel.ToList();
         }
+       
         //GetPlantsByWaterNeed will return of plants that have the desired waterNeedID. The value must be within the available range of 1-4. The desired waterNeedID
         // is matched to the corresponding WaterNeedID in PlantCare. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class, and a list of PlantDetailsModel objects will be returned to user. The value must be
         // within the available range of 1-18. The definitions for each value are available 
         // in Configuration.cs 
         public IEnumerable<PlantDetailsModel> GetPlantsByWaterNeed(int waterNeedID)
+
         {
             List<PlantCare> plantCareID = ctx.PlantCare.Where(e => e.WaterNeedID == waterNeedID).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -146,13 +166,19 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantCareID == item.PlantCareID)));
             }
+
             return plantDetailsModel.ToList();
         }
         //GetPlantsByPlantZone will return plants that reside in the desired zone. The value must be within 1-13. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class. The definitions for each value are available 
         // in Configuration.cs
 
+
+
+
+      
         public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID)
+
         {
             var query = ctx.Plants.Where(e => e.ZoneID == zoneID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
@@ -161,15 +187,20 @@ namespace GardenPlannerServices
         // BuildPlantDetailsModel, which mainly gets data from the Plants class. The definitions for each value are available 
         // in Configuration.cs
 
+
         public IEnumerable<PlantDetailsModel> GetPlantsByBloomSeason(int seasonID)
+
         {
             var query = ctx.Plants.Where(e => e.SeasonID == seasonID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
+
+       
         //GetPlantsByHeightMax will return plants that have the desired plantHeightMax. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class. The definitions for each value are available 
         // in Configuration.cs
         public IEnumerable<PlantDetailsModel> GetPlantsByHeightMax(double plantHeightMax)
+
         {
             List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => e.PlantHeightMax == plantHeightMax).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -179,26 +210,38 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantDetailsID == item.PlantDetailsID)));
             }
+
+            
             return plantDetailsModel.ToList();
+            
         }
+
+
         //GetPerrenialPlants will return a list of all the plants that have a true IsPerrenial value. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the PlantDetails class. 
         public IEnumerable<PlantDetailsModel> GetPerrenialPlants(bool selection)
+
         {
             var query = ctx.PlantDetails.Where(e => e.IsPerennial == selection).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
+
         //GetPlantByZoneAndSeason will return a list of the plants that have the desired zoneID and seasonID. Each plant will be built out using the
         //BuildPlantsModel, which mainly gets data from the Plants class. The value for zoneID must be within 1-13. The value for seasonID must be within 1-4. 
         //The definitions for these values are available in Configuration.cs
         public IEnumerable<PlantDetailsModel> GetPlantByZoneAndSeason(int zoneId, int seasonID)
+
         {
             var query = ctx.Plants.Where(e => e.ZoneID == zoneId && e.SeasonID == seasonID).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
         }
+
+      
+
         //GetPlantsByDaysToGerminate will return a list of plants within the desired range of DaysToGerminate. Each plant will be built out using the
         //BuildPlantsModel, which mainly gets data from the Plants class. 
         public IEnumerable<PlantDetailsModel> GetPlantByDaysToGerminate(int minDays, int maxDays)
+
         {
             List<PlantDetails> plantDetails = ctx.PlantDetails.Where(e => e.DaysToGerminate >= minDays && e.DaysToGerminate <= maxDays).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
@@ -207,11 +250,15 @@ namespace GardenPlannerServices
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantDetailsID == item.PlantDetailsID)));
             }
+
             return plantDetailsModel.ToList();
         }
+
+       
         //GetPlantsByMedicinal will return a list of plants that are true for either IsMedicinal, IsDeerResistant, IsToxicToAnimal, or IsToxicToHuman. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the PlantDetails class. 
         public IEnumerable<PlantDetailsModel> GetPlantByMedicinalResistanceAndToxicity(GetSpecialDetailsModel model)
+
         {
             var query = ctx.PlantDetails.Where(e => (e.IsMedicinal == model.IsMedicinal) || (e.IsDeerResistant == model.IsDeerResistant) || (e.IsToxicToAnimal == model.IsToxicToAnimal) || (e.IsToxicToHuman == model.IsToxicToHuman)).ToArray().Select(f => BuildPlantDetailsModel(f));
             return query.ToList();
@@ -394,6 +441,7 @@ namespace GardenPlannerServices
                 },
                 RootStructure = new RootStructureModel
                 {
+
                     Name = ctx.RootStructure.FirstOrDefault(r => r.RootStructureID == ctx.PlantDetails.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Name,
                     Description = ctx.RootStructure.FirstOrDefault(r => r.RootStructureID == ctx.PlantDetails.FirstOrDefault(z => z.PlantDetailsID == plantDetails.PlantDetailsID).RootStructureID).Description
                 }

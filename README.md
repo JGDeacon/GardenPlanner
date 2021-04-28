@@ -94,6 +94,10 @@ Sprint Report (Jira)
 
 https://jgdeacon.atlassian.net/jira/software/projects/GARDEN/boards/8/reports
 
+EndPoint Documentation
+
+https://docs.google.com/document/d/1JQZIJNg7bH_hQJjWbqFmTxj4u3L7gbMuoaCWcIpJv_8/edit?ts=6089a1c7
+
 ****
 ## Information and Usage  
 

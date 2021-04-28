@@ -13,6 +13,7 @@ using System.Web.Http;
 
 namespace GardenPlannerAPI.Controllers
 {
+    [Authorize]
     public class SocialInteractionsController : ApiController
     {
         private SocialInteractionsService CreateSocialInteractionsService()

@@ -14,7 +14,6 @@ namespace GardenPlannerAPI.Controllers
     [Authorize]
     public class PlantsController : ApiController
     {
-        //will create a PlantService
         private PlantService CreatePlantService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
@@ -22,7 +21,6 @@ namespace GardenPlannerAPI.Controllers
             return plantService;
         }
 
-        //POST
         [Route("api/MakePlant")]
         public IHttpActionResult Post(AddPlantModel plant)
         {
@@ -36,7 +34,6 @@ namespace GardenPlannerAPI.Controllers
 
             return Ok("New plant has been created");
         }
-        //PUT
         [Route("api/UpdatePlant")]
 
         public IHttpActionResult Put(int plantID, UpdatePlantModel model)
@@ -52,9 +49,8 @@ namespace GardenPlannerAPI.Controllers
             return Ok("Plant has been updated");
         }
 
-        //All the GETS
         [Route("api/Plants")]
-        public IHttpActionResult Get() //missing
+        public IHttpActionResult Get() 
         {
             PlantService plantService = CreatePlantService();
             var plant = plantService.GetAllPlants();
@@ -68,20 +64,20 @@ namespace GardenPlannerAPI.Controllers
             return Ok(plant);
         }
         [Route("api/Plants/Width")]
-        public IHttpActionResult GetWidth(double min, double max)//poor name
+        public IHttpActionResult GetWidth(double min, double max)
         {
             PlantService plantService = CreatePlantService();
             var plants = plantService.GetPlantsByWidth(min, max);
             return Ok(plants);
         }
-        [Route("api/Plants/Sun")] // We need a get Exposures
+        [Route("api/Plants/Sun")]
         public IHttpActionResult GetSunExposure(int sunExposureID)
         {
             PlantService plantService = CreatePlantService();
             var plants = plantService.GetPlantsBySunExposure(sunExposureID);
             return Ok(plants);
         }
-        [Route("api/Plants/Water")] // We need a get waterneeds
+        [Route("api/Plants/Water")]
         public IHttpActionResult GetWaterNeed(int waterNeedID)
         {
             PlantService plantService = CreatePlantService();
@@ -89,7 +85,7 @@ namespace GardenPlannerAPI.Controllers
             return Ok(plants);
         }
        
-        [Route("api/Plants/Bloom")] // We need a get Seasons
+        [Route("api/Plants/Bloom")] 
         public IHttpActionResult GetBloomSeason(GetPlantBySeasonIDModel model)
         {
             if (!ModelState.IsValid)
@@ -106,19 +102,17 @@ namespace GardenPlannerAPI.Controllers
             var plants = plantService.GetPlantsByHeightMax(plantHeightMax);
             return Ok(plants);
         }
-        [Route("api/Plants/Zone")] // We need a get Zones
+        [Route("api/Plants/Zone")] 
         public IHttpActionResult GetPlantZone(GetPlantByZoneIDModel model)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
             PlantService plantService = CreatePlantService();
             var plants = plantService.GetPlantByPlantZone(model.ZoneID);
-            //if (zoneID >= 14)
-            //    return BadRequest("Please enter valid number from 1-13");
             return Ok(plants);
         }
         [Route("api/Plants/Feature")]
-        public IHttpActionResult GetPerrenial(bool selection) //missing
+        public IHttpActionResult GetPerrenial(bool selection) 
         {
             PlantService plantService = CreatePlantService();
             var plants = plantService.GetPerrenialPlants(selection);
@@ -132,7 +126,7 @@ namespace GardenPlannerAPI.Controllers
             return Ok(plants);
         }
         [Route("api/Plants/Feature")]
-        public IHttpActionResult GetDaysToGerminate(int minDays, int maxDays) // not working
+        public IHttpActionResult GetDaysToGerminate(int minDays, int maxDays)
         {
             PlantService plantService = CreatePlantService();
             var plants = plantService.GetPlantByDaysToGerminate(minDays,maxDays);
@@ -180,12 +174,12 @@ namespace GardenPlannerAPI.Controllers
             var waterNeeds = plantService.GetWaterNeeds();
             return Ok(waterNeeds);
         }
-        //Added Medicinal/Toxicity
+     
         [Route("api/SpecialDetails")]
         public IHttpActionResult GetPlantByMedicianlResistanceAndToxicity(GetSpecialDetailsModel model)
         {
             PlantService plantService = CreatePlantService();
-            var specialDetails = plantService.GetPlantByMedicianlResistanceAndToxicity(model);
+            var specialDetails = plantService.GetPlantByMedicinalResistanceAndToxicity(model);
             return Ok(specialDetails);
         }
     }

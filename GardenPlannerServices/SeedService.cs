@@ -157,7 +157,7 @@ namespace GardenPlannerServices
                 PlantCareDescription = "Don't eat the eyes."
 
 
-            }) ;
+            });
             addPlantModels.Add(new AddPlantModel
             {
                 Name = "Peruvian Lilly",
@@ -385,8 +385,8 @@ namespace GardenPlannerServices
                 RootStructureID = 1,
                 Temperature = "75 degrees + F",
                 PlantDetailsDescription = "Tomato, flowering plant of the nightshade family, cultivated extensively for its edible fruits. The fruits are commonly eaten raw, served as a cooked vegetable",
-                PlantCareDescription = "Water in the early morning so that plants have sufficient moisture to make it through a hot day.Water generously the first few days that the tomato seedlings or transplants are in the ground." 
-               
+                PlantCareDescription = "Water in the early morning so that plants have sufficient moisture to make it through a hot day.Water generously the first few days that the tomato seedlings or transplants are in the ground."
+
             });
 
             addPlantModels.Add(new AddPlantModel
@@ -414,7 +414,7 @@ namespace GardenPlannerServices
                 RootStructureID = 1,
                 Temperature = "70 degrees + F",
                 PlantDetailsDescription = "The jalapeño pepper is a medium-sized chili pepper. Mature jalapeños are 2 to 3 inches in length and are typically picked and consumed while still green.Occasionally, they are allowed to fully ripen and turn red in color.",
-                PlantCareDescription = "Keep the soil constantly moist, but not soaking wet. Jalapeno peppers love water, but you don't want to inundate the plants, or you run the risk of rotting. Water every other day or every third day.Include a good plant food product for fertilizing." 
+                PlantCareDescription = "Keep the soil constantly moist, but not soaking wet. Jalapeno peppers love water, but you don't want to inundate the plants, or you run the risk of rotting. Water every other day or every third day.Include a good plant food product for fertilizing."
 
 
             });
@@ -453,6 +453,7 @@ namespace GardenPlannerServices
                 AddPlant(item);
             }
 
+            AddCommentQuestionsAnswersLikes();
         }
 
         private void SeedSupportTables()
@@ -604,7 +605,6 @@ namespace GardenPlannerServices
                 PlantBloom = false,
                 PlantAdded = false
             });
-           
             applicationUsers.Add(new ApplicationUser
             {
                 UserName = "@TerryBrown",
@@ -633,10 +633,83 @@ namespace GardenPlannerServices
                 PlantBloom = false,
                 PlantAdded = false
             });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "Nelpe",
+                Email = "NelpeJune@gmail.com",
+                PasswordHash = ph.HashPassword("Password0!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "LemonCloakers",
+                Email = "LemonCloakers@gmail.com",
+                PasswordHash = ph.HashPassword("Password0!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "Danzig",
+                Email = "Zig@hotmale.com",
+                PasswordHash = ph.HashPassword("Password0!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "Jennybean",
+                Email = "Hotness@live.com",
+                PasswordHash = ph.HashPassword("Password0!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
+            applicationUsers.Add(new ApplicationUser
+            {
+                UserName = "PGriff",
+                Email = "PGriff@family.com",
+                PasswordHash = ph.HashPassword("Password0!"),
+                SecurityStamp = Guid.NewGuid().ToString(),
+                RoleID = 3,
+                CreatedDate = DateTimeOffset.UtcNow,
+                Answer = false,
+                WhenToWater = false,
+                WhenToPlant = false,
+                PlantBloom = false,
+                PlantAdded = false
+            });
             foreach (ApplicationUser user in applicationUsers)
             {
                 ctx.Users.Add(user);
             }
+
+
+
             ctx.SaveChanges();
         }
 
@@ -685,6 +758,263 @@ namespace GardenPlannerServices
                 CreatedDate = DateTimeOffset.UtcNow
             };
             ctx.Plants.Add(newPlant);
+            ctx.SaveChanges();
+        }
+        private void AddCommentQuestionsAnswersLikes()
+        {
+            List<Comments> comments = new List<Comments>();
+            comments.Add(new Comments
+            {
+                PlantID = 1,
+                Title = "I love how this flower tastes!",
+                Comment = "It tastes just like it looks... Like magic!",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "gardenlover").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            comments.Add(new Comments
+            {
+                PlantID = 1,
+                Title = "Its got nice rainbow colors",
+                Comment = "I'm going to write a song about it!",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Beyonce").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            comments.Add(new Comments
+            {
+                PlantID = 1,
+                Title = "I have one in every room of my house",
+                Comment = "The fragrence helps me sleep at night.",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "@TerryBrown").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            comments.Add(new Comments
+            {
+                PlantID = 1,
+                Title = "Really easy to take care of",
+                Comment = "Its been on my table for over a year and it hasn't died yet.",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Moderator").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            comments.Add(new Comments
+            {
+                PlantID = 6,
+                Title = "Flowers!",
+                Comment = "Lillies are pink I think..?",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Nelpe").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            comments.Add(new Comments
+            {
+                PlantID = 12,
+                Title = "Not a biscuit",
+                Comment = "The name sounds alot like biscuit, but its not a biscuit.",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Nelpe").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            comments.Add(new Comments
+            {
+                PlantID = 1,
+                Title = "Why I like Orchids",
+                Comment = "Orchids are so Pretty!",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Jennybean").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            comments.Add(new Comments
+            {
+                PlantID = 3,
+                Title = "You know what grinds my gears?",
+                Comment = "Poison Ivy",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "PGriff").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            comments.Add(new Comments
+            {
+                PlantID = 15,
+                Title = "Bell Pepper",
+                Comment = "Bell Peppers are good for you!",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Danzig").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            ctx.Comments.AddRange(comments);
+
+            List<Questions> questions = new List<Questions>();
+            questions.Add(new Questions
+            {
+                PlantID = 1,
+                Question = "How do I water it properly?",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Danzig").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            questions.Add(new Questions
+            {
+                PlantID = 1,
+                Question = "How long do blooms last?",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Nelpe").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            questions.Add(new Questions
+            {
+                PlantID = 1,
+                Question = "Can I eat these?",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "gardenlover").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            questions.Add(new Questions
+            {
+                PlantID = 8,
+                Question = "Are the eyes toxic?",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Jennybean").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            questions.Add(new Questions
+            {
+                PlantID = 15,
+                Question = "Do these taste good?",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Nelpe").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            ctx.Questions.AddRange(questions);
+            ctx.SaveChanges();
+
+            List<Answers> answers = new List<Answers>();
+            answers.Add(new Answers
+            {
+                QuestionID = 1,
+                Answer = "I'm pretty sure you don't need to water them.",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Nelpe").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            answers.Add(new Answers
+            {
+                QuestionID = 1,
+                Answer = "Put water in a cache pot and allow the plant to soak for 10 minutes.",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Jennybean").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            answers.Add(new Answers
+            {
+                QuestionID = 2,
+                Answer = "Depending on care 3-6 months",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Jennybean").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            answers.Add(new Answers
+            {
+                QuestionID = 3,
+                Answer = "YES!",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "@TerryBrown").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            answers.Add(new Answers
+            {
+                QuestionID = 3,
+                Answer = "Are you high... no... you shouldn't eat these!",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Shirisha").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            answers.Add(new Answers
+            {
+                QuestionID = 4,
+                Answer = "Go ahead... Treat yourself #YOLO!",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Beyonce").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            answers.Add(new Answers
+            {
+                QuestionID = 4,
+                Answer = "Yes... they are a member of the nightshade family.",
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "LemonCloakers").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            ctx.Answers.AddRange(answers);
+            ctx.SaveChanges();
+
+            List<Likes> likes = new List<Likes>();
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 1,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Shirisha").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 1,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "LemonCloakers").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 1,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "PGriff").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 1,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Beyonce").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 1,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Administrator").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 1,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "gardenlover").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 1,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Beyonce").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 3,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Administrator").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 15,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "gardenlover").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 15,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Beyonce").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 15,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Administrator").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            likes.Add(new Likes
+            {
+                IsLiked = true,
+                PlantID = 15,
+                UserID = Guid.Parse(ctx.Users.Single(e => e.UserName == "Danzig").Id),
+                CreatedDate = DateTimeOffset.UtcNow
+            });
+            ctx.Likes.AddRange(likes);
             ctx.SaveChanges();
         }
     }

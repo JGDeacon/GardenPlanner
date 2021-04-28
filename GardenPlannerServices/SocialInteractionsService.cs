@@ -35,7 +35,7 @@ namespace GardenPlannerServices
         }
         public bool AlterLikePlant(AlterLikeModel model)
         {
-            if (ctx.Likes.Where(e => e.PlantID == model.PlantID).Count() < 1) //We need to add the record to the Likes table
+            if (ctx.Likes.Where(e => e.PlantID == model.PlantID && e.UserID == _userID).Count() < 1) //We need to add the record to the Likes table
             {
                 Likes likes = new Likes
                 {
@@ -134,7 +134,7 @@ namespace GardenPlannerServices
             {
                 Question = questions.Question,
                 CreatedDate = questions.CreatedDate,
-                Answers = ctx.Answers.Where(e => questionID == questions.QuestionID).Select(g => new AnswerModel
+                Answers = ctx.Answers.Where(e => e.QuestionID == questions.QuestionID).Select(g => new AnswerModel
                 {
                     Answer = g.Answer,
                     CreatedDate = g.CreatedDate,

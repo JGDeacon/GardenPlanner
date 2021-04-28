@@ -18,7 +18,7 @@ namespace GardenPlannerAPI.Controllers
         private PlantService CreatePlantService()
         {
             var userID = Guid.Parse(User.Identity.GetUserId());
-            var plantService = new PlantService(userID);
+            var plantService = new PlantService(userID);            
             return plantService;
         }
 

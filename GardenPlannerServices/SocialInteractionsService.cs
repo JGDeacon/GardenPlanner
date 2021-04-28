@@ -22,6 +22,7 @@ namespace GardenPlannerServices
             _userID = userID;
         }
 
+        //AddComment Method allows to post a comment on a plant by taking information like plantID , Title and comment.
         public bool AddComment(AddCommentModel model)
         {
             Comments comments = new Comments
@@ -35,6 +36,8 @@ namespace GardenPlannerServices
             ctx.Comments.Add(comments);
             return ctx.SaveChanges() == 1;
         }
+
+        //AlterLikePlant allows to like a plant with given plant ID.
         public bool AlterLikePlant(AlterLikeModel model)
         {
             if (ctx.Likes.Where(e => e.PlantID == model.PlantID && e.UserID == _userID).Count() < 1) 
@@ -64,6 +67,9 @@ namespace GardenPlannerServices
             }
             return ctx.SaveChanges() == 1;
         }
+
+        //Add questions method  allows to post questions on plant by taking PlantID and Question.
+       
         public bool AddQuestion(AddQuestionModel model)
         {
             Questions questions = new Questions
@@ -76,6 +82,8 @@ namespace GardenPlannerServices
             ctx.Questions.Add(questions);
             return ctx.SaveChanges() == 1;
         }
+
+       //AddAnswer Method uses AddAnswerModel and allows to post answer for the question posted on plant with giving QuestionID.
         public bool AddAnswer(AddAnswerModel model)
         {
             Answers answers = new Answers
@@ -88,6 +96,8 @@ namespace GardenPlannerServices
             ctx.Answers.Add(answers);
             return ctx.SaveChanges() == 1;
         }
+
+        //GetComments returns all the comments on a plant which matches the given plantID, with Palnt name and comments.
         public GetCommentsModel GetComments(int plantID) 
         {
             Plants plants = ctx.Plants.Single(e => e.PlantID == plantID);
@@ -106,6 +116,8 @@ namespace GardenPlannerServices
             };
             return query;
         }
+
+        //GetLikes method returns likes of a plant which matches with the given plantID.
         public int GetLikes(int plantID)
         {
             int count = 0;
@@ -119,6 +131,8 @@ namespace GardenPlannerServices
             }
             return count;
         }
+
+        //GetQuestions method takes PlantID and return all the questions posted on the plant that matches given plantID.
         public IEnumerable<GetQuestionsModel> GetQuestions(int plantID)
         {
             var query = ctx.Questions.Where(e => e.PlantID == plantID).Select(f => new GetQuestionsModel
@@ -129,6 +143,8 @@ namespace GardenPlannerServices
             });
             return query.ToList();
         }
+
+        //Getquestions method takes Questions and and returns the question matches to questionID and all the answers posted on the question.
         public GetQuestionAnswerModel GetQuestionAnswers(int questionID) 
         {
             Questions questions = ctx.Questions.Single(e => e.QuestionID == questionID);

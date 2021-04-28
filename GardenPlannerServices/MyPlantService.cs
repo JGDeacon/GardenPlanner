@@ -16,6 +16,9 @@ namespace GardenPlannerServices
         {
             _userID = userID;
         }
+
+        //GetMyPlants method will return all the plants in the My Plant List.
+        //This method uses GetPlantModel and populates the information from MyPlants class
         public IEnumerable<GetMyPlantModel> GetMyPlants() 
         {
             var query = ctx.MyPlants.Where(e => e.UserID == _userID).Select(e => new GetMyPlantModel
@@ -32,6 +35,8 @@ namespace GardenPlannerServices
             );
             return query.ToArray();
         }
+
+        //AddMyPlantMethod allows posting new plant to my plant based of AddMyPlantModel
         public bool AddMyPlant(AddMyPlantModel model)
         {
             MyPlants myPlants = new MyPlants
@@ -48,6 +53,8 @@ namespace GardenPlannerServices
             ctx.MyPlants.Add(myPlants);
             return ctx.SaveChanges() == 1;
         }
+
+        //Add notes allow to add a notes to plant on myplant list. It takes MyPlantID , Adds note to plant that matches with my palnt ID.
         public bool AddNote(AddNotesToMyPlant model)
         {
             MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == model.MyPlantID);
@@ -58,6 +65,8 @@ namespace GardenPlannerServices
             myPlants.Notes = model.Notes;
             return ctx.SaveChanges() == 1;
         }
+
+        //DeleteMyPlant method takes in the myPlantID and delete the plant matches with that ID, from my plant list. 
         public bool DeleteMyPlant(int myPlantID)
         {
             MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == myPlantID);
@@ -68,6 +77,9 @@ namespace GardenPlannerServices
             ctx.MyPlants.Remove(myPlants);
             return ctx.SaveChanges() == 1;
         }
+
+        //UpdateMyPlant method takes in myPlantID of the palnt you would like to update and new infomation that need to be updated.
+        //Populates the new updated information using UpdateMyplantMethod
         public bool UpdateMyPlant(UpdateMyPlantModel model)
         {
             MyPlants myPlants = ctx.MyPlants.Single(e => e.MyPlantID == model.MyPlantID);
@@ -76,7 +88,6 @@ namespace GardenPlannerServices
                 return false;
             }
             myPlants.Location = model.Location;
-            myPlants.PlantID = model.MyPlantID;
             myPlants.DatePlanted = model.DatePlanted;
             myPlants.Photo = model.Photo;
             myPlants.Notes = model.Notes;

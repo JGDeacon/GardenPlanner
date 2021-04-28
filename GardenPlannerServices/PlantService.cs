@@ -110,11 +110,11 @@ namespace GardenPlannerServices
             return query.ToList();
         }
 
-        public IEnumerable<PlantDetailsModel> GetPlantsByWidth(double min, double max) 
+        
 
         //GetPlantsByWidth will return a list of plants within the desired range of PlantWidthMax. The values are in inches. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class.  The definitions for each value are available 
-        // in Configuration.cs.
+        // in SeedService.cs.
         public IEnumerable<PlantDetailsModel> GetPlantsByWidth(double min, double max)
 
         {
@@ -134,7 +134,7 @@ namespace GardenPlannerServices
        
         //GetPlantsBySunExposure will return of plants that have the desired sunExposureID. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class. The value must be within the available range of 1-4. The definitions for each value are available 
-        // in Configuration.cs 
+        // in Seedservice.cs 
         public IEnumerable<PlantDetailsModel> GetPlantsBySunExposure(int sunExposureID)
 
         {
@@ -155,7 +155,7 @@ namespace GardenPlannerServices
         // is matched to the corresponding WaterNeedID in PlantCare. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class, and a list of PlantDetailsModel objects will be returned to user. The value must be
         // within the available range of 1-18. The definitions for each value are available 
-        // in Configuration.cs 
+        // in Seedservice.cs 
         public IEnumerable<PlantDetailsModel> GetPlantsByWaterNeed(int waterNeedID)
 
         {
@@ -171,12 +171,8 @@ namespace GardenPlannerServices
         }
         //GetPlantsByPlantZone will return plants that reside in the desired zone. The value must be within 1-13. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class. The definitions for each value are available 
-        // in Configuration.cs
+        // in SeedService.cs
 
-
-
-
-      
         public IEnumerable<PlantDetailsModel> GetPlantByPlantZone(int zoneID)
 
         {
@@ -185,7 +181,7 @@ namespace GardenPlannerServices
         }
         //GetPlantsByBloomSeason will return plants that grow in the desired seasonID. The value must be within 1-4. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class. The definitions for each value are available 
-        // in Configuration.cs
+        // in SeedService.cs
 
 
         public IEnumerable<PlantDetailsModel> GetPlantsByBloomSeason(int seasonID)

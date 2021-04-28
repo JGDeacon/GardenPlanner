@@ -610,6 +610,7 @@ namespace GardenPlannerServices
                 UserName = "@TerryBrown",
                 Email = "FirstTimeInstructor@1150.org",
                 PasswordHash = ph.HashPassword("Test@1150"),
+
                 SecurityStamp = Guid.NewGuid().ToString(),
                 RoleID = 3,
                 CreatedDate = DateTimeOffset.UtcNow,
@@ -624,6 +625,7 @@ namespace GardenPlannerServices
                 UserName = "Shirisha",
                 Email = "Shirisha@gmail.com",
                 PasswordHash = ph.HashPassword("Password0!"),
+
                 SecurityStamp = Guid.NewGuid().ToString(),
                 RoleID = 3,
                 CreatedDate = DateTimeOffset.UtcNow,

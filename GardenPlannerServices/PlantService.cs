@@ -73,15 +73,16 @@ namespace GardenPlannerServices
         // values of the variables (SeasonID between 1-4, etc.).
         public bool UpdatePlant(int plantID, UpdatePlantModel model)
         {
-            PlantCare plantCare = ctx.PlantCare.FirstOrDefault(e => e.PlantCareID == model.PlantCareID);
+            int plantCareID = ctx.Plants.Single(e => e.PlantID == plantID).PlantCareID;
+            PlantCare plantCare = ctx.PlantCare.FirstOrDefault(e => e.PlantCareID == plantCareID);
 
-            
-                plantCare.SunExposureID = model.SunExposureID;
-                plantCare.WaterNeedID = model.WaterNeedID;
-                plantCare.Temperature = model.Temperature;
-                plantCare.Description = model.Description;
-                plantCare.ModifiedDate = DateTimeOffset.UtcNow;
-            
+
+            plantCare.SunExposureID = model.SunExposureID;
+            plantCare.WaterNeedID = model.WaterNeedID;
+            plantCare.Temperature = model.Temperature;
+            plantCare.Description = model.Description;
+            plantCare.ModifiedDate = DateTimeOffset.UtcNow;
+
 
 
             Plants plants = ctx.Plants.Single(e => e.PlantID == plantID);
@@ -89,9 +90,7 @@ namespace GardenPlannerServices
             plants.ScientificName = model.ScientificName;
             plants.ZoneID = model.ZoneID;
             plants.SeasonID = model.SeasonID;
-            plants.PlantTypeID = model.PlantTypeID;
-            plants.PlantCareID = model.PlantCareID;
-            plants.PlantDetailsID = model.PlantDetailsID;
+            plants.PlantTypeID = model.PlantTypeID;          
             plants.ModifiedDate = DateTimeOffset.UtcNow;
             return ctx.SaveChanges() == 2;
         }
@@ -123,7 +122,7 @@ namespace GardenPlannerServices
 
             foreach (PlantDetails item in plantDetails)
             {
-                plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantDetailsID == item.PlantDetailsID)));
+                plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.FirstOrDefault(e => e.PlantDetailsID == item.PlantDetailsID)));
             }
 
             

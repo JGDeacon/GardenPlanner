@@ -213,8 +213,8 @@ namespace GardenPlannerServices
         }
 
 
-        //GetPerrenialPlants will return a list of all the plants that have a true IsPerrenial value. Each plant will be built out using the
-        // BuildPlantDetailsModel, which mainly gets data from the PlantDetails class. 
+        //GetPerrenialPlants will return a list of all the plants that have either a true or false IsPerrenial value, depending on the user
+        //input. Each plant will be built out using the BuildPlantDetailsModel, which mainly gets data from the PlantDetails class.
         public IEnumerable<PlantDetailsModel> GetPerrenialPlants(bool selection)
 
         {

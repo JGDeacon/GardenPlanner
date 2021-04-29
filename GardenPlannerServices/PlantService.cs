@@ -137,10 +137,10 @@ namespace GardenPlannerServices
         public IEnumerable<PlantDetailsModel> GetPlantsBySunExposure(int sunExposureID)
 
         {
-            List<PlantCare> plantCareID = ctx.PlantCare.Where(e => e.SunExposureID == sunExposureID).ToList();
+            List<PlantCare> plantCare = ctx.PlantCare.Where(e => e.SunExposureID == sunExposureID).ToList();
             List<PlantDetailsModel> plantDetailsModel = new List<PlantDetailsModel>();
 
-            foreach (PlantCare item in plantCareID)
+            foreach (PlantCare item in plantCare)
             {
                 plantDetailsModel.Add(BuildPlantDetailsModel(ctx.Plants.Single(e => e.PlantCareID == item.PlantCareID)));
             }
@@ -193,7 +193,7 @@ namespace GardenPlannerServices
        
         //GetPlantsByHeightMax will return plants that have the desired plantHeightMax. Each plant will be built out using the
         // BuildPlantDetailsModel, which mainly gets data from the Plants class. The definitions for each value are available 
-        // in Configuration.cs
+        // in Seedservice.cs
         public IEnumerable<PlantDetailsModel> GetPlantsByHeightMax(double plantHeightMax)
 
         {
@@ -223,7 +223,7 @@ namespace GardenPlannerServices
 
         //GetPlantByZoneAndSeason will return a list of the plants that have the desired zoneID and seasonID. Each plant will be built out using the
         //BuildPlantsModel, which mainly gets data from the Plants class. The value for zoneID must be within 1-13. The value for seasonID must be within 1-4. 
-        //The definitions for these values are available in Configuration.cs
+        //The definitions for these values are available in Seedservice.cs
         public IEnumerable<PlantDetailsModel> GetPlantByZoneAndSeason(int zoneId, int seasonID)
 
         {

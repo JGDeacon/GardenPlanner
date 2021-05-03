@@ -1,6 +1,7 @@
 ﻿using GardenPlannerData;
 using GardenPlannerModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -526,6 +527,8 @@ namespace GardenPlannerServices
             sunExposures.Add(new SunExposures { SunExposureID = 4, Name = "Full Shade", Description = "Plants require less than 3 hours of direct sun per day", CreatedDate = new DateTime(2021, 1, 1, 00, 00, 00) });
             ctx.SunExposures.AddRange(sunExposures);
 
+
+            
             List<UserRoles> userRoles = new List<UserRoles>();
             userRoles.Add(new UserRoles { Name = "Admin", Description = "All powerful" });
             userRoles.Add(new UserRoles { Name = "Moderator", Description = "Can Update Some Tables" });
@@ -708,6 +711,9 @@ namespace GardenPlannerServices
             {
                 ctx.Users.Add(user);
             }
+
+           
+
 
 
 

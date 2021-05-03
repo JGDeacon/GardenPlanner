@@ -15,14 +15,20 @@ namespace GardenPlannerServices
         protected readonly ApplicationDbContext ctx = new ApplicationDbContext();
 
         private readonly Guid _userID;
+        private readonly bool _isAdmin;
 
-        public PlantService(Guid userID)
+        public PlantService(Guid userID, bool isAdmin)
         {
             _userID = userID;
+            _isAdmin = isAdmin;
         }
         //AddPlant builds a new plant based off AddPlantModel. The information is set to the properties in PlantCare and PlantDetails.
         public bool AddPlant(AddPlantModel model)
         {
+            if (_isAdmin)
+            {
+                return true;
+            }
 
             PlantCare plantCare = new PlantCare
             {
